@@ -1,6 +1,6 @@
 {
-  "name": "nextjs-alterna-web",
-  "version": "0.1.0",
+  "name": "@institute-alterna/www",
+  "version": "0.0.1-beta",
   "private": true,
   "scripts": {
     "dev": "next dev",
@@ -8,13 +8,25 @@
     "start": "next start",
     "lint": "eslint"
   },
+  "engines": {
+    "node": ">=22.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/institute-alterna/www.git"
+  },
+  "author": "Institute Alterna",
+  "license": "MIT",
   "dependencies": {
+    "@sanity/image-url": "^2.0.3",
     "next": "16.1.4",
+    "next-sanity": "^12.0.14",
     "react": "19.2.3",
     "react-dom": "19.2.3"
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4",
+    "@tailwindcss/typography": "^0.5.19",
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
