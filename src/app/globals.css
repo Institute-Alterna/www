@@ -2,26 +2,87 @@
 @plugin "@tailwindcss/typography";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* Primary Accent (Green) */
+  --color-accent: #44940a;
+  --color-accent-hover: #5acc0d;
+  --color-accent-highlight: #6ce714;
+
+  /* Neutrals */
+  --color-black: #0d0d0d;
+  --color-white: #fafafa;
+
+  /* Greys */
+  --color-grey-900: #1a1a1a;
+  --color-grey-800: #262626;
+  --color-grey-700: #404040;
+  --color-grey-600: #666666;
+  --color-grey-500: #999999;
+  --color-grey-400: #b3b3b3;
+  --color-grey-200: #e5e5e5;
+  --color-grey-100: #f5f5f5;
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-accent: var(--color-accent);
+  --color-accent-hover: var(--color-accent-hover);
+  --color-accent-highlight: var(--color-accent-highlight);
+
+  --color-black: var(--color-black);
+  --color-white: var(--color-white);
+
+  --color-grey-900: var(--color-grey-900);
+  --color-grey-800: var(--color-grey-800);
+  --color-grey-700: var(--color-grey-700);
+  --color-grey-600: var(--color-grey-600);
+  --color-grey-500: var(--color-grey-500);
+  --color-grey-400: var(--color-grey-400);
+  --color-grey-200: var(--color-grey-200);
+  --color-grey-100: var(--color-grey-100);
+
+  --font-heading: var(--font-dm-sans);
+  --font-body: var(--font-onest);
+  --font-mono: var(--font-dm-mono);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+/* Base Styles */
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 5rem;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background-color: var(--color-white);
+  color: var(--color-black);
+  font-family: var(--font-body), system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Selection */
+::selection {
+  background-color: var(--color-accent);
+  color: white;
+}
+
+/* Focus Styles */
+:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
+}
+
+/* Skip to Content */
+.skip-to-content {
+  position: absolute;
+  left: -9999px;
+  top: 0;
+  z-index: 100;
+  padding: 0.5rem 1rem;
+  background-color: var(--color-accent);
+  color: white;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.skip-to-content:focus {
+  left: 0;
 }

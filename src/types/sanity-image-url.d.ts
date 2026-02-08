@@ -6,6 +6,6 @@ declare module '@sanity/image-url/lib/types/types' {
   export type SanityImageSource = {
     _type?: 'image' | string;
     asset?: { _ref?: string; _id?: string } | string;
-    [key: string]: any;
+    [key: string]: unknown;
   };
 }
