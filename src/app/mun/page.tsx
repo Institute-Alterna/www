@@ -27,7 +27,14 @@ export default function AAIMUNPage() {
         subheadline="The world's first competitive Model United Nations centred in artificial intelligence legislation and policy, in partnership with the Futures Summit Alliance and competing under the UNx Conference league."
         variant="ascii-below"
         asciiTheme="parliament"
-        ctas={[{ label: "Contact Us", href: "/contact", variant: "primary" }]}
+        ctas={[
+          {
+            label: "Pre-register for AAIMUN 2026",
+            href: "https://forms.alterna.dev/mun/26/interest",
+            variant: "primary",
+          },
+          { label: "Join the team", href: "/volunteer", variant: "secondary", className: "bg-white" },
+        ]}
       />
 
       {/* What is AAIMUN */}
@@ -47,9 +54,9 @@ export default function AAIMUNPage() {
         <Text variant="muted" className="mt-4">
           Through our partnership with the Futures Summit Alliance, AAIMUN
           operates under the UNx Conference league - a competitive framework
-          that raises the standard for Model United Nations globally.
-          Delegates engage with real-world AI policy challenges, from
-          algorithmic bias to autonomous systems regulation.
+          that raises the standard for Model United Nations globally. Delegates
+          engage with real-world AI policy challenges, from algorithmic bias to
+          autonomous systems regulation.
         </Text>
       </Section>
 
@@ -83,13 +90,13 @@ export default function AAIMUNPage() {
       <Section>
         <Badge variant="accent">Partnership</Badge>
         <Heading level="h2" className="mt-4">
-          Future Summit Alliance
+          Futures Summit Alliance
         </Heading>
         <Text variant="muted" className="mt-4">
-          AAIMUN is proudly partnered with the Florida Scholastic Association,
-          a leading scholastic competition organisation. This partnership
-          places AAIMUN within the UNx Conference league, ensuring competitive
-          rigour and recognition for participating delegates.
+          AAIMUN is proudly partnered with the Futures Summit Alliance, a
+          leading youth leadership organisation. This partnership places AAIMUN
+          within the UNx Conference league, ensuring competitive rigour and
+          recognition for participating delegates.
         </Text>
       </Section>
 
@@ -103,8 +110,8 @@ export default function AAIMUNPage() {
             partnership opportunities.
           </Text>
           <div className="mt-8 flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
-            <Button href="/contact" variant="primary">
-              Get in Touch
+            <Button href="https://forms.alterna.dev/mun/26/interest" variant="primary">
+              Pre-register for AAIMUN 2026
             </Button>
             <Button href="/volunteer" variant="secondary">
               Join the Team

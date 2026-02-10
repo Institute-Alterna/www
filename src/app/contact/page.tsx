@@ -4,11 +4,11 @@ import Section from "@/components/ui/Section";
 import Heading from "@/components/ui/Heading";
 import { siteConfig, socialLinks } from "@/lib/data/content";
 import ContactFormEmbed from "@/components/ui/ContactFormEmbed";
+import { cn } from "@/lib/utils";
 
 export const metadata: Metadata = {
   title: "Contact",
-  description:
-    "Get in touch with Alterna. We would love to hear from you.",
+  description: "Get in touch with Alterna. We would love to hear from you.",
 };
 
 export default function ContactPage() {
@@ -23,6 +23,34 @@ export default function ContactPage() {
       {/* Contact Form */}
       <Section className="pb-0">
         <ContactFormEmbed />
+        <div className="text-sm text-muted-foreground mt-0 font-body leading-relaxed text-center text-grey-600">
+          <p>
+            Please do not report security vulnerabilities here. Instead, refer
+            to our{" "}
+            <a
+              href="/security"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="underline"
+            >
+              Security Vulnerability Disclosure Policy
+            </a>
+            .
+          </p>
+          <p>
+            To communicate with specific CHS chapters, please find their contact
+            information on our{" "}
+            <a
+              href="https://chs.alterna.dev/chapters"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="underline"
+            >
+              Chapter Directory
+            </a>
+            .
+          </p>
+        </div>
       </Section>
 
       {/* Social Links */}
@@ -66,9 +94,8 @@ export default function ContactPage() {
         <div className="mx-auto max-w-3xl text-center">
           <Heading level="h3">Financial transparency</Heading>
           <p className="mt-4 font-body text-sm leading-relaxed text-grey-600">
-            Alterna is fiscally sponsored by The Hack Foundation
-            (d.b.a. Hack Club), a 501(c)(3) nonprofit. Our finances are
-            publicly available.
+            Alterna is fiscally sponsored by The Hack Foundation (d.b.a. Hack
+            Club), a 501(c)(3) non-profit. Our finances are publicly available.
           </p>
           <a
             href={siteConfig.hcbUrl}

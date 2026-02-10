@@ -16,7 +16,7 @@ export default function AboutPage() {
     <>
       <Hero
         headline="About Institute Alterna"
-        subheadline="A fiscally sponsored 501(c)(3) nonprofit on a mission to create world-class computer science resources for people of all ages, backgrounds, and circumstances."
+        subheadline="A fiscally sponsored 501(c)(3) non-profit on a mission to create world-class computer science resources for people of all ages, backgrounds, and circumstances."
         variant="compact"
       />
       <MissionSection />

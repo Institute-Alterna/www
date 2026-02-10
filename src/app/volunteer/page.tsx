@@ -26,7 +26,7 @@ export default function VolunteerPage() {
         subheadline="Volunteer with Alterna and help build the future of technology education. Flexible, fully remote, and deeply impactful."
         variant="compact"
         ctas={[
-          { label: "Contact Us", href: "/contact", variant: "primary" },
+          { label: "Open Roles", href: "#open-roles", variant: "primary" },
         ]}
       />
 
@@ -103,7 +103,7 @@ export default function VolunteerPage() {
       </Section>
 
       {/* Role Exploration Placeholder */}
-      <Section variant="dark">
+      <Section variant="dark" id="open-roles">
         <div className="mx-auto max-w-3xl text-center">
           <Badge variant="accent">Coming Soon</Badge>
           <Heading level="h2" className="mt-4">

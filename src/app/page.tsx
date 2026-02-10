@@ -8,10 +8,10 @@ export default function HomePage() {
     <>
       <Hero
         headline="Redefining learning for the next generation"
-        subheadline="Institute Alterna is a fiscally sponsored 501(c)(3) nonprofit developing computer science resources for people of all ages - from AI-centred Model United Nations to student-led chapters worldwide."
+        subheadline="Institute Alterna is a fiscally sponsored 501(c)(3) non-profit developing computer science resources for people of all ages - from AI-centred Model United Nations to student-led chapters worldwide."
         ctas={[
           { label: "Explore Programmes", href: "#programmes", variant: "primary" },
-          { label: "Volunteer", href: "/volunteer", variant: "secondary" },
+          { label: "Volunteer", href: "/volunteer", variant: "secondary", className: "bg-white" },
         ]}
         variant="ascii-background"
         asciiTheme="code-flow"

@@ -30,7 +30,7 @@ export default function PrivacyPage() {
           </p>
           <p>
             Institute Alterna is fiscally sponsored by The Hack Foundation
-            (d.b.a. Hack Club), a 501(c)(3) nonprofit (EIN: 81-2908499).
+            (d.b.a. Hack Club), a 501(c)(3) non-profit (EIN: 81-2908499).
           </p>
 
           <Heading level="h2">Information We Collect</Heading>

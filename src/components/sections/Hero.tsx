@@ -13,6 +13,7 @@ interface HeroCTA {
   variant?: "primary" | "secondary" | "ghost";
   external?: boolean;
   scroll?: boolean;
+  className?: string;
 }
 
 interface HeroProps {
@@ -73,7 +74,7 @@ function HeroText({
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, ease: "easeOut", delay: 0.3 }}
           className={cn(
-            "mt-10 flex flex-col gap-4 sm:flex-row",
+            "mt-10 flex flex-col gap-4 sm:flex-row pointer-events-auto",
             align === "center"
               ? "items-center sm:justify-center"
               : "items-start"
@@ -86,6 +87,7 @@ function HeroText({
               variant={cta.variant ?? "primary"}
               size="lg"
               external={cta.external}
+              className={cta.className}
             >
               {cta.label}
             </Button>
