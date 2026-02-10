@@ -1,0 +1,14 @@
+import { cn } from "@/lib/utils";
+
+interface ProseProps {
+  children: React.ReactNode;
+  className?: string;
+}
+
+export default function Prose({ children, className }: ProseProps) {
+  return (
+    <div className={cn("prose prose-grey mx-auto max-w-4xl", className)}>
+      {children}
+    </div>
+  );
+}

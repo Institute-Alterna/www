@@ -63,20 +63,18 @@ export default function VolunteerPage() {
 
       {/* What We Expect */}
       <Section variant="grey">
-        <div className="mx-auto max-w-3xl">
-          <Heading level="h2">What we expect</Heading>
-          <Text variant="muted" className="mt-4">
-            We are looking for individuals who share our values and are
-            committed to making a difference. You do not need to be an expert
-            - what matters most is your dedication, willingness to learn, and
-            enthusiasm for the mission.
-          </Text>
-          <Text variant="muted" className="mt-4">
-            Volunteers are expected to communicate openly, meet reasonable
-            deadlines, and treat all members of the community with respect.
-            We operate on trust, and we value reliability.
-          </Text>
-        </div>
+        <Heading level="h2">What we expect</Heading>
+        <Text variant="muted" className="mt-4">
+          We are looking for individuals who share our values and are
+          committed to making a difference. You do not need to be an expert
+          - what matters most is your dedication, willingness to learn, and
+          enthusiasm for the mission.
+        </Text>
+        <Text variant="muted" className="mt-4">
+          Volunteers are expected to communicate openly, meet reasonable
+          deadlines, and treat all members of the community with respect.
+          We operate on trust, and we value reliability.
+        </Text>
       </Section>
 
       {/* Available Teams */}
@@ -85,7 +83,7 @@ export default function VolunteerPage() {
         <Heading level="h2" className="mt-4">
           Available teams
         </Heading>
-        <Text variant="muted" className="mt-4 max-w-2xl">
+        <Text variant="muted" className="mt-4">
           Choose the team that best fits your skills and interests. Each team
           plays a critical role in our mission.
         </Text>
@@ -106,7 +104,7 @@ export default function VolunteerPage() {
 
       {/* Role Exploration Placeholder */}
       <Section variant="dark">
-        <div className="mx-auto max-w-2xl text-center">
+        <div className="mx-auto max-w-3xl text-center">
           <Badge variant="accent">Coming Soon</Badge>
           <Heading level="h2" className="mt-4">
             Role exploration
@@ -127,7 +125,7 @@ export default function VolunteerPage() {
       {/* FAQ */}
       <Section>
         <Heading level="h2">Frequently asked questions</Heading>
-        <Accordion items={volunteerFAQs} className="mt-8 max-w-3xl" />
+        <Accordion items={volunteerFAQs} className="mt-8" />
       </Section>
     </>
   );

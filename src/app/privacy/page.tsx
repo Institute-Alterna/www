@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Hero from "@/components/sections/Hero";
 import Section from "@/components/ui/Section";
 import Heading from "@/components/ui/Heading";
+import Prose from "@/components/ui/Prose";
 
 export const metadata: Metadata = {
   title: "Privacy Policy",
@@ -14,11 +15,12 @@ export default function PrivacyPage() {
       <Hero
         headline="Privacy Policy"
         subheadline="Last updated: February 2026"
-        variant="compact"
+        variant="ascii-dark"
+        asciiTheme="cipher"
       />
 
       <Section>
-        <div className="prose prose-grey mx-auto max-w-3xl">
+        <Prose>
           <Heading level="h2">Introduction</Heading>
           <p>
             Institute Alterna (&ldquo;we&rdquo;, &ldquo;our&rdquo;, or
@@ -107,7 +109,7 @@ export default function PrivacyPage() {
             If you have questions about this Privacy Policy, please contact us
             at <a href="mailto:hey@alterna.dev">hey@alterna.dev</a>.
           </p>
-        </div>
+        </Prose>
       </Section>
     </>
   );

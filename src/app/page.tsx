@@ -13,6 +13,8 @@ export default function HomePage() {
           { label: "Explore Programmes", href: "#programmes", variant: "primary" },
           { label: "Volunteer", href: "/volunteer", variant: "secondary" },
         ]}
+        variant="ascii-background"
+        asciiTheme="code-flow"
       />
       <ProgrammeShowcase />
       <Impact />

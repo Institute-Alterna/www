@@ -63,7 +63,7 @@ export default function ContactPage() {
 
       {/* Financial Transparency */}
       <Section>
-        <div className="mx-auto max-w-2xl text-center">
+        <div className="mx-auto max-w-3xl text-center">
           <Heading level="h3">Financial transparency</Heading>
           <p className="mt-4 font-body text-sm leading-relaxed text-grey-600">
             Alterna is fiscally sponsored by The Hack Foundation

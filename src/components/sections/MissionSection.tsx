@@ -11,7 +11,7 @@ export default function MissionSection() {
       <Heading level="h2" className="mt-4">
         Our mission
       </Heading>
-      <Text variant="muted" className="mt-4 max-w-2xl">
+      <Text variant="muted" className="mt-4">
         Like the lotus flower that rises through murky waters to bloom in
         clarity, we believe transformative learning can emerge from any
         circumstance. Our mission rests on three pillars.

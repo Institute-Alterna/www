@@ -78,7 +78,7 @@ export default function Header() {
     );
     observer.observe(footer);
     return () => observer.disconnect();
-  }, []);
+  }, );
 
   // Easter egg: track hovered/clicked centre links
   const handleCentreLinkInteract = useCallback((label: string) => {
@@ -123,6 +123,17 @@ export default function Header() {
     [handleDropdownEnter, handleCentreLinkInteract]
   );
 
+  // Force solid white header on dark-hero pages
+  const darkHeroPages = ["/security", "/privacy"];
+  const forceSolid = darkHeroPages.includes(pathname);
+
+  // Fully dark header for pages with black backgrounds
+  const isDarkHeader = pathname === "/enrichment";
+
+  const navLinkClass = isDarkHeader
+    ? "text-sm font-semibold text-grey-400 transition-colors hover:text-white"
+    : "text-sm font-semibold text-grey-600 transition-colors hover:text-black";
+
   function renderNavItem(item: NavItem, isCentre: boolean) {
     if (item.dropdown) {
       return (
@@ -132,7 +143,7 @@ export default function Header() {
           onMouseEnter={(e) => captureOffset(e, item.label, isCentre)}
           onMouseLeave={handleDropdownLeave}
         >
-          <button className="flex items-center gap-1 px-3 py-2 text-sm font-semibold text-grey-600 transition-colors hover:text-black">
+          <button className={`flex items-center gap-1 px-3 py-2 ${navLinkClass}`}>
             {item.label}
             <svg
               className={`h-3 w-3 transition-transform duration-200 ${
@@ -160,7 +171,7 @@ export default function Header() {
         <Link
           key={item.label}
           href={item.href}
-          className="px-3 py-2 text-sm font-semibold text-grey-600 transition-colors hover:text-black"
+          className={`px-3 py-2 ${navLinkClass}`}
           onMouseEnter={() => {
             if (isCentre) handleCentreLinkInteract(item.label);
           }}
@@ -183,9 +194,13 @@ export default function Header() {
             ? "pointer-events-none -translate-y-full opacity-0"
             : "translate-y-0 opacity-100"
         } ${
-          scrolled || activeDropdown
-            ? "bg-white/90 backdrop-blur-md shadow-sm"
-            : "bg-transparent"
+          isDarkHeader
+            ? scrolled || activeDropdown
+              ? "bg-black/90 backdrop-blur-md"
+              : "bg-transparent"
+            : scrolled || activeDropdown || forceSolid
+              ? "bg-white backdrop-blur-md shadow-sm"
+              : "bg-transparent"
         }`}
       >
         <div
@@ -218,7 +233,7 @@ export default function Header() {
                 >
                   <Link
                     href="/enrichment"
-                    className="px-3 py-2 text-sm font-semibold text-grey-600 transition-colors hover:text-black"
+                    className={`px-3 py-2 ${navLinkClass}`}
                   >
                     Research
                   </Link>
@@ -242,7 +257,7 @@ export default function Header() {
           {/* Mobile Toggle */}
           <button
             onClick={() => setMobileOpen(!mobileOpen)}
-            className="relative z-50 ml-auto lg:hidden"
+            className={`relative z-50 ml-auto lg:hidden ${isDarkHeader ? "text-white" : ""}`}
             aria-label={mobileOpen ? "Close menu" : "Open menu"}
           >
             <HamburgerIcon open={mobileOpen} />

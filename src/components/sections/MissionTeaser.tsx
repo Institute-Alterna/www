@@ -6,7 +6,7 @@ import Button from "@/components/ui/Button";
 export default function MissionTeaser() {
   return (
     <Section variant="grey">
-      <div className="mx-auto max-w-2xl text-center">
+      <div className="mx-auto max-w-3xl text-center">
         <Heading level="h2">Mission Serenity</Heading>
         <Text variant="muted" className="mt-4">
           We believe that everyone, regardless of background, deserves access

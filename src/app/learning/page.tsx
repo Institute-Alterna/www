@@ -21,7 +21,7 @@ export default function LearningPage() {
       />
 
       <Section>
-        <div className="mx-auto max-w-2xl text-center">
+        <div className="mx-auto max-w-3xl text-center">
           <Badge variant="accent">Coming Soon</Badge>
           <Heading level="h2" className="mt-4">
             Something new is on the way

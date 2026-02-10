@@ -57,10 +57,10 @@ export default function MegaMenu({
       >
         {/* Description column */}
         <div>
-          <p className="text-xs font-semibold uppercase tracking-widest text-grey-500">
+          <p className="text-xs font-bold uppercase tracking-widest text-grey-500">
             {dropdown.heading}
           </p>
-          <p className="mt-2 text-sm leading-relaxed text-grey-400">
+          <p className="mt-2 text-base leading-relaxed text-grey-400">
             {dropdown.description}
           </p>
         </div>

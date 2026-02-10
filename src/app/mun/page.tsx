@@ -25,33 +25,32 @@ export default function AAIMUNPage() {
       <Hero
         headline="AAIMUN"
         subheadline="The world's first competitive Model United Nations centred in artificial intelligence legislation and policy, in partnership with the Futures Summit Alliance and competing under the UNx Conference league."
-        variant="compact"
+        variant="ascii-below"
+        asciiTheme="parliament"
         ctas={[{ label: "Contact Us", href: "/contact", variant: "primary" }]}
       />
 
       {/* What is AAIMUN */}
       <Section>
-        <div className="mx-auto max-w-3xl">
-          <Badge variant="accent">About</Badge>
-          <Heading level="h2" className="mt-4">
-            What is AAIMUN?
-          </Heading>
-          <Text variant="muted" className="mt-4">
-            AAIMUN (Alterna Artificial Intelligence Model United Nations) is a
-            pioneering programme that brings together students from around the
-            world to debate, draft, and defend legislation focused on artificial
-            intelligence policy. Unlike traditional MUN, AAIMUN centres its
-            committees entirely around the intersection of AI and global
-            governance.
-          </Text>
-          <Text variant="muted" className="mt-4">
-            Through our partnership with the Futures Summit Alliance, AAIMUN
-            operates under the UNx Conference league - a competitive framework
-            that raises the standard for Model United Nations globally.
-            Delegates engage with real-world AI policy challenges, from
-            algorithmic bias to autonomous systems regulation.
-          </Text>
-        </div>
+        <Badge variant="accent">About</Badge>
+        <Heading level="h2" className="mt-4">
+          What is AAIMUN?
+        </Heading>
+        <Text variant="muted" className="mt-4">
+          AAIMUN (Alterna Artificial Intelligence Model United Nations) is a
+          pioneering programme that brings together students from around the
+          world to debate, draft, and defend legislation focused on artificial
+          intelligence policy. Unlike traditional MUN, AAIMUN centres its
+          committees entirely around the intersection of AI and global
+          governance.
+        </Text>
+        <Text variant="muted" className="mt-4">
+          Through our partnership with the Futures Summit Alliance, AAIMUN
+          operates under the UNx Conference league - a competitive framework
+          that raises the standard for Model United Nations globally.
+          Delegates engage with real-world AI policy challenges, from
+          algorithmic bias to autonomous systems regulation.
+        </Text>
       </Section>
 
       {/* Inaugural Conference - stats are meaningful, keep animations */}
@@ -82,23 +81,21 @@ export default function AAIMUNPage() {
 
       {/* Partnership */}
       <Section>
-        <div className="mx-auto max-w-3xl">
-          <Badge variant="accent">Partnership</Badge>
-          <Heading level="h2" className="mt-4">
-            Future Summmit Alliance
-          </Heading>
-          <Text variant="muted" className="mt-4">
-            AAIMUN is proudly partnered with the Florida Scholastic Association,
-            a leading scholastic competition organisation. This partnership
-            places AAIMUN within the UNx Conference league, ensuring competitive
-            rigour and recognition for participating delegates.
-          </Text>
-        </div>
+        <Badge variant="accent">Partnership</Badge>
+        <Heading level="h2" className="mt-4">
+          Future Summit Alliance
+        </Heading>
+        <Text variant="muted" className="mt-4">
+          AAIMUN is proudly partnered with the Florida Scholastic Association,
+          a leading scholastic competition organisation. This partnership
+          places AAIMUN within the UNx Conference league, ensuring competitive
+          rigour and recognition for participating delegates.
+        </Text>
       </Section>
 
       {/* CTA */}
       <Section variant="grey">
-        <div className="mx-auto max-w-2xl text-center">
+        <div className="mx-auto max-w-3xl text-center">
           <Heading level="h2">Stay updated</Heading>
           <Text variant="muted" className="mt-4">
             Interested in the next AAIMUN conference? Get in touch to stay

@@ -27,7 +27,8 @@ export default function CHSPage() {
       <Hero
         headline="Computing Honour Society"
         subheadline="Hyper-local tech education delivered through student-led chapters at schools worldwide. Empowering the next generation of technologists, one school at a time."
-        variant="compact"
+        variant="ascii-below"
+        asciiTheme="circuit"
         ctas={[
           {
             label: "Start a Chapter",
@@ -40,25 +41,23 @@ export default function CHSPage() {
 
       {/* What is CHS */}
       <Section>
-        <div className="mx-auto max-w-3xl">
-          <Badge variant="accent">About</Badge>
-          <Heading level="h2" className="mt-4">
-            What is CHS?
-          </Heading>
-          <Text variant="muted" className="mt-4">
-            The Computing Honour Society (CHS) is a programme within
-            Alterna that establishes student-led chapters at schools
-            to deliver hyper-local technology education. Each chapter is run
-            by a team of strategists who design and deliver programming
-            tailored to their school and community.
-          </Text>
-          <Text variant="muted" className="mt-4">
-            CHS chapters provide workshops, mentorship, competition
-            preparation, and community outreach - all led by students, for
-            students. Our model ensures that tech education is not just
-            accessible, but relevant and impactful at the local level.
-          </Text>
-        </div>
+        <Badge variant="accent">About</Badge>
+        <Heading level="h2" className="mt-4">
+          What is CHS?
+        </Heading>
+        <Text variant="muted" className="mt-4">
+          The Computing Honour Society (CHS) is a programme within
+          Alterna that establishes student-led chapters at schools
+          to deliver hyper-local technology education. Each chapter is run
+          by a team of strategists who design and deliver programming
+          tailored to their school and community.
+        </Text>
+        <Text variant="muted" className="mt-4">
+          CHS chapters provide workshops, mentorship, competition
+          preparation, and community outreach - all led by students, for
+          students. Our model ensures that tech education is not just
+          accessible, but relevant and impactful at the local level.
+        </Text>
       </Section>
 
       {/* Stats - meaningful data, keep animations */}
@@ -113,17 +112,15 @@ export default function CHSPage() {
 
       {/* Strategist Model */}
       <Section variant="grey">
-        <div className="mx-auto max-w-3xl">
-          <Badge variant="accent">Leadership</Badge>
-          <Heading level="h2" className="mt-4">
-            The Strategist Model
-          </Heading>
-          <Text variant="muted" className="mt-4">
-            Each CHS chapter is led by a team of strategists - not traditional
-            officer titles, but roles designed to reflect the strategic
-            thinking and leadership our members bring to their communities.
-          </Text>
-        </div>
+        <Badge variant="accent">Leadership</Badge>
+        <Heading level="h2" className="mt-4">
+          The Strategist Model
+        </Heading>
+        <Text variant="muted" className="mt-4">
+          Each CHS chapter is led by a team of strategists - not traditional
+          officer titles, but roles designed to reflect the strategic
+          thinking and leadership our members bring to their communities.
+        </Text>
 
         <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
           {strategistRoles.map((role) => (
@@ -141,7 +138,7 @@ export default function CHSPage() {
 
       {/* CTA */}
       <Section>
-        <div className="mx-auto max-w-2xl text-center">
+        <div className="mx-auto max-w-3xl text-center">
           <Heading level="h2">
             Bring CHS to your school
           </Heading>

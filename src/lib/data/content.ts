@@ -35,8 +35,12 @@ export const centreNavItems: NavItem[] = [
       description:
         "The world's first competitive Model United Nations centred in artificial intelligence legislation and policy.",
       links: [
-        { label: "AAIMUN 2026", href: "#", external: true },
-        { label: "About AAIMUN", href: "/aaimun" },
+        {
+          label: "AAIMUN 2026",
+          href: "https://forms.alterna.dev/mun/26/interest?sauce=websiteHeader",
+          external: true,
+        },
+        { label: "About AAIMUN", href: "/mun" },
       ],
     },
   },
@@ -104,7 +108,7 @@ export const programmes: Programme[] = [
     tagline: "AI meets global policy",
     description:
       "The world's first competitive Model United Nations centred in artificial intelligence legislation, in collaboration with the Future Summit Alliance under the UNx Conference league.",
-    href: "/aaimun",
+    href: "/mun",
   },
   {
     name: "Computing Honour Society",
@@ -391,7 +395,7 @@ export const socialLinks: SocialLink[] = [
 // ─── Footer Navigation ───
 
 export const footerProgrammes: NavItem[] = [
-  { label: "AAIMUN", href: "/aaimun" },
+  { label: "AAIMUN", href: "/mun" },
   { label: "Computing Honour Society", href: "/chs" },
   { label: "Learning Platform", href: "/learning" },
 ];

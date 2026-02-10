@@ -12,7 +12,7 @@ export default function ProgrammeShowcase() {
       <Heading level="h2" className="mt-4">
         Building the future of learning
       </Heading>
-      <Text variant="muted" className="mt-4 max-w-2xl">
+      <Text variant="muted" className="mt-4">
         From AI-centred Model United Nations to hyper-local tech education,
         our programmes serve learners at every level.
       </Text>
