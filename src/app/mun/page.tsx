@@ -1,10 +1,10 @@
 import type { Metadata } from "next";
 import Hero from "@/components/sections/Hero";
+import NewsletterSignup from "@/components/sections/NewsletterSignup";
 import Section from "@/components/ui/Section";
 import Heading from "@/components/ui/Heading";
 import Text from "@/components/ui/Text";
 import Badge from "@/components/ui/Badge";
-import Button from "@/components/ui/Button";
 import FadeInView from "@/components/ui/FadeInView";
 import StaggerContainer from "@/components/ui/StaggerContainer";
 
@@ -100,25 +100,8 @@ export default function AAIMUNPage() {
         </Text>
       </Section>
 
-      {/* CTA */}
-      <Section variant="grey">
-        <div className="mx-auto max-w-3xl text-center">
-          <Heading level="h2">Stay updated</Heading>
-          <Text variant="muted" className="mt-4">
-            Interested in the next AAIMUN conference? Get in touch to stay
-            informed about upcoming events, delegate registration, and
-            partnership opportunities.
-          </Text>
-          <div className="mt-8 flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
-            <Button href="https://forms.alterna.dev/mun/26/interest" variant="primary">
-              Pre-register for AAIMUN 2026
-            </Button>
-            <Button href="/volunteer" variant="secondary">
-              Join the Team
-            </Button>
-          </div>
-        </div>
-      </Section>
+      {/* Newsletter CTA */}
+      <NewsletterSignup source="web/aaimun" variant="grey" />
     </>
   );
 }

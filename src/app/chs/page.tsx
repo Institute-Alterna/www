@@ -1,10 +1,10 @@
 import type { Metadata } from "next";
 import Hero from "@/components/sections/Hero";
+import NewsletterSignup from "@/components/sections/NewsletterSignup";
 import Section from "@/components/ui/Section";
 import Heading from "@/components/ui/Heading";
 import Text from "@/components/ui/Text";
 import Badge from "@/components/ui/Badge";
-import Button from "@/components/ui/Button";
 import FadeInView from "@/components/ui/FadeInView";
 import StaggerContainer from "@/components/ui/StaggerContainer";
 import { chapters, strategistRoles } from "@/lib/data/content";
@@ -136,29 +136,8 @@ export default function CHSPage() {
         </div>
       </Section>
 
-      {/* CTA */}
-      <Section>
-        <div className="mx-auto max-w-3xl text-center">
-          <Heading level="h2">
-            Bring CHS to your school
-          </Heading>
-          <Text variant="muted" className="mt-4">
-            Starting a chapter is straightforward. If you are a student or
-            administrator passionate about technology education, we would love
-            to hear from you.
-          </Text>
-          <div className="mt-8">
-            <Button
-              href="https://chs.alterna.dev"
-              variant="primary"
-              size="lg"
-              external
-            >
-              Start a Chapter
-            </Button>
-          </div>
-        </div>
-      </Section>
+      {/* Newsletter CTA */}
+      <NewsletterSignup source="web/chs" variant="light" />
     </>
   );
 }

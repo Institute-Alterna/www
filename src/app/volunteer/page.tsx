@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Hero from "@/components/sections/Hero";
+import NewsletterSignup from "@/components/sections/NewsletterSignup";
 import Section from "@/components/ui/Section";
 import Heading from "@/components/ui/Heading";
 import Text from "@/components/ui/Text";
@@ -127,6 +128,9 @@ export default function VolunteerPage() {
         <Heading level="h2">Frequently asked questions</Heading>
         <Accordion items={volunteerFAQs} className="mt-8" />
       </Section>
+
+      {/* Talent Network CTA */}
+      <NewsletterSignup source="web/volunteer" type="talent" variant="grey" />
     </>
   );
 }

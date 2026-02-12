@@ -2,6 +2,7 @@ import Hero from "@/components/sections/Hero";
 import ProgrammeShowcase from "@/components/sections/ProgrammeShowcase";
 import Impact from "@/components/sections/Impact";
 import MissionTeaser from "@/components/sections/MissionTeaser";
+import NewsletterSignup from "@/components/sections/NewsletterSignup";
 
 export default function HomePage() {
   return (
@@ -19,6 +20,7 @@ export default function HomePage() {
       <ProgrammeShowcase />
       <Impact />
       <MissionTeaser />
+      <NewsletterSignup source="web/landing" variant="grey" />
     </>
   );
 }

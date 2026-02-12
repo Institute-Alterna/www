@@ -4,7 +4,6 @@ import Section from "@/components/ui/Section";
 import Heading from "@/components/ui/Heading";
 import { siteConfig, socialLinks } from "@/lib/data/content";
 import ContactFormEmbed from "@/components/ui/ContactFormEmbed";
-import { cn } from "@/lib/utils";
 
 export const metadata: Metadata = {
   title: "Contact",
