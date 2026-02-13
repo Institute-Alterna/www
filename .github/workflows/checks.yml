@@ -105,9 +105,9 @@ jobs:
       - name: Build
         run: npm run build
         env:
-          SANITY_APP_ID: ${{ secrets.SANITY_APP_ID }}
-          SANITY_PROJECT_ID: ${{ secrets.SANITY_PROJECT_ID }}
-          SANITY_DATASET: ${{ secrets.SANITY_DATASET }}
+          SANITY_APP_ID: ${{ secrets.SANITY_STUDIO_APP_ID }}
+          SANITY_PROJECT_ID: ${{ secrets.SANITY_STUDIO_PROJECT_ID }}
+          SANITY_DATASET: ${{ secrets.SANITY_STUDIO_DATASET }}
 
       - name: Check build artifacts
         run: |
