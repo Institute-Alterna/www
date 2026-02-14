@@ -11,6 +11,7 @@ import type {
   VolunteerTeam,
   MissionPillar,
   StrategistRole,
+  ShowcaseSlide,
 } from "@/lib/types";
 
 // ─── Site Configuration ───
@@ -339,7 +340,8 @@ export const approachToWork: VolunteerTeam[] = [
 export const volunteerBenefits = [
   {
     label: "Fully remote",
-    description: "Work from anywhere. All you need is a laptop and an internet connection.",
+    description:
+      "Work from anywhere. All you need is a laptop and an internet connection.",
   },
   {
     label: "Async-first",
@@ -372,17 +374,17 @@ export const volunteerFAQs: FAQItem[] = [
   {
     question: "How much time do I need to commit?",
     answer:
-      "Around 3–5 hours per week. This is flexible — we work around your schedule, not the other way round.",
+      "Around 3-5 hours per week, although this is variable by role. Plus, rest assured that we understand you have other commitments and are flexible as long as you communicate proactively.",
   },
   {
     question: "Do I need prior experience?",
     answer:
-      "No. What matters is that you're reliable, curious, and willing to figure things out. We'll teach you the rest.",
+      "Not for most roles. What matters is that you're reliable, curious, and willing to figure things out. We'll teach you the rest.",
   },
   {
     question: "Can I volunteer from outside the United States?",
     answer:
-      "Yes. We operate globally and all work is remote. Several team members are based outside the US.",
+      "Absolutely. We operate globally and all work is remote. Our programmes are designed with a global audience in mind, and several team members are based outside the US.",
   },
   {
     question: "Is there an age requirement?",
@@ -392,7 +394,46 @@ export const volunteerFAQs: FAQItem[] = [
   {
     question: "What happens after I apply?",
     answer:
-      "We review applications and respond within 1–2 weeks. You'll have a short conversation with a team lead to find the right fit.",
+      "We review applications proactively and keep you updated on the process regularly. Check the role page for more details on the application process specific for that role.",
+  },
+  {
+    question: "Do you use AI to filter applications?",
+    answer:
+      "Not at all. Every application is read by humans. Please apply knowing that your won't be filtered out by an algorithm.",
+  },
+  {
+    question: "Can I use AI to apply?",
+    answer:
+      "You are heavily discouraged to do so. We value authenticity and want to hear your unique story :)",
+  },
+];
+
+// ─── Volunteer Showcase ───
+
+export const volunteerShowcase: ShowcaseSlide[] = [
+  {
+    title: "AAIMUN 2025",
+    subtitle: "Personnel & Global Conference Staff",
+    src: "/mun/munTeam.webp",
+    alt: "Team members collaborating remotely on a video call",
+  },
+  {
+    title: "Computing Honour Society",
+    subtitle: "Personal Cybersecurity Workshop",
+    src: "/chs/robinsonWorkshop.webp",
+    alt: "Students participating in an AAIMUN conference session",
+  },
+  {
+    title: "Networking Fundamentals",
+    subtitle: "Workshop in Madawaska, United States",
+    src: "/workshops/madawaskaWorkshop.webp",
+    alt: "A volunteer presenting a workshop to a group of students",
+  },
+  {
+    title: "Computing Honour Society",
+    subtitle: "Members in Tampa, United States",
+    src: "/chs/robinsonTeam.webp",
+    alt: "A volunteer presenting a workshop to a group of students",
   },
 ];
 

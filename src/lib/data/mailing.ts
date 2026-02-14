@@ -79,12 +79,12 @@ export const MAILING_COPY: Record<
     heading: "Stay in the loop",
     description:
       "Get updates on our programmes, events, and resources. No spam, unsubscribe at any time.",
-    success: "You\u2019re subscribed! Check your inbox.",
+    success: "You\u2019re in! Check your inbox.",
   },
   talent: {
     heading: "Join our talent network",
     description:
       "Get notified when new volunteer roles open. No spam, unsubscribe at any time.",
-    success: "You\u2019re on the list! We\u2019ll be in touch.",
+    success: "You\u2019re all set! You\u2019ll hear from us whenever new roles open.",
   },
 };

@@ -139,5 +139,12 @@ export interface SanityRole {
   active: boolean;
 }
 
+export interface ShowcaseSlide {
+  title: string;
+  subtitle: string;
+  src: string;
+  alt: string;
+}
+
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export type PortableTextBlock = any;

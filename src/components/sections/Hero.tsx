@@ -6,6 +6,7 @@ import Container from "@/components/ui/Container";
 import AsciiCanvas from "@/components/sections/AsciiCanvas";
 import { cn } from "@/lib/utils";
 import type { AsciiTheme } from "@/lib/ascii/types";
+import type { ReactNode } from "react";
 
 interface HeroCTA {
   label: string;
@@ -20,8 +21,9 @@ interface HeroProps {
   headline: string;
   subheadline: string;
   ctas?: HeroCTA[];
-  variant?: "full" | "compact" | "ascii-background" | "ascii-below" | "ascii-dark";
+  variant?: "full" | "compact" | "split" | "ascii-background" | "ascii-below" | "ascii-dark";
   asciiTheme?: AsciiTheme;
+  rightContent?: ReactNode;
   className?: string;
 }
 
@@ -104,6 +106,7 @@ export default function Hero({
   ctas = [],
   variant = "full",
   asciiTheme,
+  rightContent,
   className,
 }: HeroProps) {
   // Original full variant
@@ -123,6 +126,34 @@ export default function Hero({
       <section className={cn("flex items-center bg-white py-20 md:py-28", className)}>
         <Container className="w-full">
           <HeroText headline={headline} subheadline={subheadline} ctas={ctas} />
+        </Container>
+      </section>
+    );
+  }
+
+  // Split variant — left-aligned text, optional right content
+  if (variant === "split") {
+    return (
+      <section className={cn("flex items-center bg-white py-20 md:py-28", className)}>
+        <Container className="w-full">
+          <div className="grid items-center gap-12 lg:grid-cols-2">
+            <HeroText
+              headline={headline}
+              subheadline={subheadline}
+              ctas={ctas}
+              align="left"
+            />
+            {rightContent && (
+              <motion.div
+                initial={{ opacity: 0, x: 20 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.6, ease: "easeOut", delay: 0.2 }}
+                className="flex items-center justify-center"
+              >
+                {rightContent}
+              </motion.div>
+            )}
+          </div>
         </Container>
       </section>
     );

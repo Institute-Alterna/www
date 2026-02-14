@@ -6,11 +6,13 @@ import Heading from "@/components/ui/Heading";
 import Text from "@/components/ui/Text";
 import Badge from "@/components/ui/Badge";
 import Accordion from "@/components/ui/Accordion";
+import ImageShowcase from "@/components/ui/ImageShowcase";
 import RolesList from "@/components/sections/RolesList";
 import {
   approachToWork,
   volunteerBenefits,
   volunteerFAQs,
+  volunteerShowcase,
 } from "@/lib/data/content";
 import { getActiveRoles } from "@/sanity/client";
 
@@ -29,15 +31,16 @@ export default async function VolunteerPage() {
     <>
       <Hero
         headline="Join the mission"
-        subheadline="We're building the future of technology education — and we need people who ship, not people who pad their CVs. Fully remote, async-first, and built on trust."
-        variant="compact"
+        subheadline="We're reshaping the way learners across the world receive technology education, and we need people who ship their best work in a fully remote and async-first team."
+        variant="split"
         ctas={[
           { label: "Open Roles", href: "#open-roles", variant: "primary" },
         ]}
+        rightContent={<ImageShowcase slides={volunteerShowcase} />}
       />
 
       {/* What We Expect */}
-      <Section>
+      <Section className="pt-0 md:pt-0">
         <Text variant="muted" className="mt-4 max-w-3xl">
           <b>
             We are looking for exceptional high school and undergraduate
@@ -163,7 +166,7 @@ export default async function VolunteerPage() {
 
       {/* Talent Network CTA */}
       <Section id="talent-network">
-      <NewsletterSignup source="web/volunteer" type="talent" variant="grey" />
+          <NewsletterSignup source="web/volunteer" type="talent" />
       </Section>
     </>
   );

@@ -1,4 +1,4 @@
-import { describe, it, expect, vi, afterEach, beforeEach } from "vitest";
+import { describe, it, expect, vi, afterEach } from "vitest";
 import { render, screen, cleanup, waitFor } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import NewsletterSignup from "@/components/sections/NewsletterSignup";
@@ -89,10 +89,9 @@ vi.mock("framer-motion", () => {
   };
 });
 
-afterEach(cleanup);
-
-beforeEach(() => {
-  vi.restoreAllMocks();
+afterEach(() => {
+  cleanup();
+  vi.clearAllMocks();
 });
 
 function mockFetchSuccess() {
@@ -139,7 +138,7 @@ describe("NewsletterSignup", () => {
   });
 
   it("subscribe button appears after typing", async () => {
-    const user = userEvent.setup();
+    const user = userEvent.setup({ delay: null });
     render(<NewsletterSignup source="web/landing" />);
 
     const input = screen.getByPlaceholderText("you@example.com");
@@ -151,7 +150,7 @@ describe("NewsletterSignup", () => {
   });
 
   it("subscribe button persists when input has value but is blurred", async () => {
-    const user = userEvent.setup();
+    const user = userEvent.setup({ delay: null });
     render(<NewsletterSignup source="web/landing" />);
 
     const input = screen.getByPlaceholderText("you@example.com");
@@ -165,7 +164,7 @@ describe("NewsletterSignup", () => {
 
   it("client-side validation rejects invalid emails without fetch", async () => {
     const fetchSpy = vi.spyOn(globalThis, "fetch");
-    const user = userEvent.setup();
+    const user = userEvent.setup({ delay: null });
     render(<NewsletterSignup source="web/landing" />);
 
     const input = screen.getByPlaceholderText("you@example.com");
@@ -180,7 +179,7 @@ describe("NewsletterSignup", () => {
 
   it("submits correct payload to /api/mailing", async () => {
     mockFetchSuccess();
-    const user = userEvent.setup();
+    const user = userEvent.setup({ delay: null });
     render(<NewsletterSignup source="web/aaimun" />);
 
     const input = screen.getByPlaceholderText("you@example.com");
@@ -196,7 +195,7 @@ describe("NewsletterSignup", () => {
 
   it("shows success message on successful response", async () => {
     mockFetchSuccess();
-    const user = userEvent.setup();
+    const user = userEvent.setup({ delay: null });
     render(<NewsletterSignup source="web/landing" />);
 
     const input = screen.getByPlaceholderText("you@example.com");
@@ -205,14 +204,14 @@ describe("NewsletterSignup", () => {
 
     await waitFor(() => {
       expect(
-        screen.getByText(/subscribed/)
+        screen.getByText(/Check your inbox/)
       ).toBeInTheDocument();
     });
   });
 
   it("shows server error message on error response", async () => {
     mockFetchError("Email already exists.");
-    const user = userEvent.setup();
+    const user = userEvent.setup({ delay: null });
     render(<NewsletterSignup source="web/landing" />);
 
     const input = screen.getByPlaceholderText("you@example.com");
@@ -226,7 +225,7 @@ describe("NewsletterSignup", () => {
 
   it("shows network error on fetch rejection", async () => {
     mockFetchReject();
-    const user = userEvent.setup();
+    const user = userEvent.setup({ delay: null });
     render(<NewsletterSignup source="web/landing" />);
 
     const input = screen.getByPlaceholderText("you@example.com");
@@ -248,17 +247,15 @@ describe("NewsletterSignup", () => {
       })
     );
 
-    const user = userEvent.setup();
+    const user = userEvent.setup({ delay: null });
     render(<NewsletterSignup source="web/landing" />);
 
     const input = screen.getByPlaceholderText("you@example.com");
     await user.type(input, "test@example.com");
     await user.click(screen.getByRole("button", { name: "Subscribe" }));
 
-    await waitFor(() => {
-      const btn = screen.getByRole("button", { name: /Subscribing/ });
-      expect(btn).toBeDisabled();
-    });
+    const btn = await screen.findByRole("button", { name: /Subscribing/ });
+    expect(btn).toBeDisabled();
 
     resolvePromise(
       new Response(JSON.stringify({ success: true }), {
@@ -269,7 +266,7 @@ describe("NewsletterSignup", () => {
   });
 
   it("error clears on keystroke", async () => {
-    const user = userEvent.setup();
+    const user = userEvent.setup({ delay: null });
     render(<NewsletterSignup source="web/landing" />);
 
     const input = screen.getByPlaceholderText("you@example.com");
@@ -287,7 +284,7 @@ describe("NewsletterSignup", () => {
   });
 
   it("sets aria-invalid and aria-describedby on error", async () => {
-    const user = userEvent.setup();
+    const user = userEvent.setup({ delay: null });
     render(<NewsletterSignup source="web/landing" />);
 
     const input = screen.getByPlaceholderText("you@example.com");
@@ -315,7 +312,7 @@ describe("NewsletterSignup", () => {
 
   it("sends type in payload for talent signup", async () => {
     mockFetchSuccess();
-    const user = userEvent.setup();
+    const user = userEvent.setup({ delay: null });
     render(<NewsletterSignup source="web/volunteer" type="talent" />);
 
     const input = screen.getByPlaceholderText("you@example.com");
