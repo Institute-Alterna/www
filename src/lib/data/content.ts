@@ -288,72 +288,111 @@ export const strategistRoles: StrategistRole[] = [
 
 // ─── Volunteer ───
 
-export const volunteerTeams: VolunteerTeam[] = [
+export const approachToWork: VolunteerTeam[] = [
   {
-    name: "AAIMUN",
+    name: "Clock Speed",
     description:
-      "Help organise and run the world's first AI-centred Model United Nations conference.",
+      "Move fast on the things that count and close the gap between what could be done now and later.",
   },
   {
-    name: "CHS",
+    name: "Laser Focus",
     description:
-      "Support chapters with curriculum development, mentorship, and operational guidance.",
+      "Go for the juice, not the paperwork. Produce real outcomes with minimal overhead and maximum autonomy.",
   },
   {
-    name: "Operations",
+    name: "Learner-centred Design",
     description:
-      "Keep the organisation running smoothly - logistics, planning, and process improvement.",
+      "Build things your own siblings, classmates, and neighbours would find beautiful to use.",
   },
   {
-    name: "Content",
+    name: "Meet Only When Necessary",
     description:
-      "Create educational resources, articles, and learning materials for our platforms.",
+      "Only meet when you must, only with the people who need to be there. The rest is async.",
   },
   {
-    name: "Marketing",
+    name: "Transparent by Default",
     description:
-      "Spread the word through social media, design, and communications.",
+      "Anyone can see what's happening and jump in where they can help with no gatekeeping.",
   },
   {
-    name: "Trust & Safety",
+    name: "Pitch It, Own It",
     description:
-      "Ensure our programmes and platforms remain safe, inclusive, and welcoming for all.",
+      "If you have an idea, pitch it and run with it. There is no glass ceiling and we'll back you up.",
+  },
+  {
+    name: "Think Globally",
+    description:
+      "Consider the global impact and design for learners across time zones, cultures, and contexts.",
+  },
+  {
+    name: "Deliver with Confidence",
+    description:
+      "You're trusted to raise concerns, communicate proactively, and represent learners' interests.",
+  },
+  {
+    name: "Enjoy the Craft",
+    description:
+      "We celebrate small wins, learn from failure, and find genuine fulfilment in the work itself.",
   },
 ];
 
 export const volunteerBenefits = [
-  "Flexible time off - volunteer on your own schedule",
-  "Fully remote - contribute from anywhere in the world",
-  "Mentorship from experienced leaders",
-  "Letters of recommendation for outstanding volunteers",
-  "Real-world skill development in your area of interest",
+  {
+    label: "Fully remote",
+    description: "Work from anywhere. All you need is a laptop and an internet connection.",
+  },
+  {
+    label: "Async-first",
+    description:
+      "Communicate through text + video messages and enjoy customisable notifications muted at night. You manage your own schedule.",
+  },
+  {
+    label: "Flexible hours",
+    description:
+      "Exams, holidays, life happens. Take time off when you need it with no guilt.",
+  },
+  {
+    label: "Skills Beyond Busywork",
+    description:
+      "Develop design thinking, cross-functional collaboration, and ship programmes with a real impact.",
+  },
+  {
+    label: "Career support",
+    description:
+      "Referrals, portfolio-ready work, and honest feedback to help you land your next opportunity.",
+  },
+  {
+    label: "Ownership from day one",
+    description:
+      "You'll own your share in projects, make decisions, and see your impact directly.",
+  },
 ];
 
 export const volunteerFAQs: FAQItem[] = [
   {
     question: "How much time do I need to commit?",
     answer:
-      "We ask for a minimum of 3–5 hours per week, but this is flexible. We understand that volunteers have other commitments and work around your schedule.",
+      "Around 3–5 hours per week. This is flexible — we work around your schedule, not the other way round.",
   },
   {
     question: "Do I need prior experience?",
     answer:
-      "Not at all. We welcome volunteers of all skill levels and backgrounds. What matters most is your enthusiasm and willingness to learn.",
+      "No. What matters is that you're reliable, curious, and willing to figure things out. We'll teach you the rest.",
   },
   {
     question: "Can I volunteer from outside the United States?",
     answer:
-      "Absolutely. Institute Alterna operates globally, and many of our team members are based internationally. All volunteer work is remote.",
+      "Yes. We operate globally and all work is remote. Several team members are based outside the US.",
   },
   {
     question: "Is there an age requirement?",
     answer:
-      "We welcome volunteers aged 14 and above. Volunteers under 18 may need parental or guardian consent depending on the role.",
+      "You must be at least 14. Volunteers under 18 may need parental or guardian consent depending on the role.",
   },
   {
     question: "What happens after I apply?",
     answer:
-      "Our team will review your application and reach out within 1–2 weeks. You'll have a brief conversation with a team lead to find the best fit for your skills and interests.",
+      "We review applications and respond within 1–2 weeks. You'll have a short conversation with a team lead to find the right fit.",
   },
 ];
 

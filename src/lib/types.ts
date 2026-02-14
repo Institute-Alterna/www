@@ -86,3 +86,58 @@ export interface StrategistRole {
   title: string;
   description: string;
 }
+
+// Sanity CMS — Volunteer Roles
+
+export interface RoleCommunication {
+  asynchronous: boolean;
+  collaborationFrequency: string;
+  language: string;
+  liveCollaboration: boolean;
+}
+
+export interface RoleDuration {
+  ongoing: boolean;
+}
+
+export interface RoleCompensation {
+  amount: number;
+  benefits: string[];
+  salary: boolean;
+}
+
+/** Subset of fields used for role listing cards */
+export interface RoleCardData {
+  _id: string;
+  slug: string;
+  name: string;
+  team: string;
+  workMode: string;
+  region: string;
+  workload: number;
+}
+
+/** Full Sanity role document */
+export interface SanityRole {
+  _id: string;
+  _type: "role";
+  slug: string;
+  name: string;
+  team: string;
+  workMode: string;
+  region: string;
+  workload: number;
+  overview: PortableTextBlock[];
+  responsibilities: string[];
+  requirements: string[];
+  whatYouWillLearn: string[];
+  exceptionalPoints?: string[];
+  communication: RoleCommunication;
+  duration: RoleDuration;
+  compensation: RoleCompensation;
+  specialisedCompetencyAssessment?: boolean;
+  active: boolean;
+}
+
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export type PortableTextBlock = any;

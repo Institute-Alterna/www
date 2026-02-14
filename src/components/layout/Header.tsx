@@ -125,7 +125,9 @@ export default function Header() {
 
   // Force solid white header on dark-hero pages
   const darkHeroPages = ["/security", "/privacy"];
-  const forceSolid = darkHeroPages.includes(pathname);
+  const forceSolid =
+    darkHeroPages.includes(pathname) ||
+    (pathname.startsWith("/volunteer/") && pathname !== "/volunteer");
 
   // Fully dark header for pages with black backgrounds
   const isDarkHeader = pathname === "/enrichment";

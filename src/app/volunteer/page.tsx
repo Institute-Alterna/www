@@ -5,43 +5,94 @@ import Section from "@/components/ui/Section";
 import Heading from "@/components/ui/Heading";
 import Text from "@/components/ui/Text";
 import Badge from "@/components/ui/Badge";
-import Button from "@/components/ui/Button";
 import Accordion from "@/components/ui/Accordion";
+import RolesList from "@/components/sections/RolesList";
 import {
-  volunteerTeams,
+  approachToWork,
   volunteerBenefits,
   volunteerFAQs,
 } from "@/lib/data/content";
+import { getActiveRoles } from "@/sanity/client";
 
 export const metadata: Metadata = {
   title: "Volunteer",
   description:
-    "Join Alterna as a volunteer. Flexible, remote, and impactful - contribute to programmes that shape the future of learning.",
+    "Join Alterna as a volunteer. Flexible, remote, and impactful — contribute to programmes that shape the future of learning.",
 };
 
-export default function VolunteerPage() {
+export default async function VolunteerPage() {
+  const roles = await getActiveRoles();
+  const highlightBenefits = volunteerBenefits.slice(0, 2);
+  const restBenefits = volunteerBenefits.slice(2);
+
   return (
     <>
       <Hero
         headline="Join the mission"
-        subheadline="Volunteer with Alterna and help build the future of technology education. Flexible, fully remote, and deeply impactful."
+        subheadline="We're building the future of technology education — and we need people who ship, not people who pad their CVs. Fully remote, async-first, and built on trust."
         variant="compact"
         ctas={[
           { label: "Open Roles", href: "#open-roles", variant: "primary" },
         ]}
       />
 
-      {/* Why Volunteer */}
+      {/* What We Expect */}
       <Section>
+        <Text variant="muted" className="mt-4 max-w-3xl">
+          <b>
+            We are looking for exceptional high school and undergraduate
+            students
+          </b>{" "}
+          who are driven by our mission{" "}
+          <a href="/about" className="font-medium text-accent underline">
+            to revolutionise the computer science learning journey
+          </a>{" "}
+          for learners of all ages. You don&apos;t need to be an expert. You
+          need to be reliable, communicative, and genuinely interested in the
+          work that you do with <b>humility over ego</b>.
+        </Text>
+        <Text variant="muted" className="mt-4 max-w-3xl">
+          As a non-profit, we rely on unpaid volunteers. However, that does not
+          stop us from operating on trust and moving fast. Our personnel are
+          expected to flag blockers early and treat every collaboration as a
+          chance to raise the bar, while treated with a degree of
+          professionalism that makes it hard to tell this is a student-run
+          organisation.
+        </Text>
+      </Section>
+
+      {/* Benefits */}
+      <Section variant="grey" id="benefits">
         <Badge variant="accent">Benefits</Badge>
         <Heading level="h2" className="mt-4">
           Why volunteer with us
         </Heading>
 
-        <div className="mt-10 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
-          {volunteerBenefits.map((benefit) => (
-            <div key={benefit} className="flex items-start gap-3 rounded-lg border border-grey-200 p-5">
-              <span className="mt-0.5 text-accent" aria-hidden="true">
+        {/* Two highlighted benefits */}
+        <div className="mt-10 grid gap-6 md:grid-cols-2">
+          {highlightBenefits.map((benefit) => (
+            <div
+              key={benefit.label}
+              className="rounded-xl border border-grey-200 bg-white p-8"
+            >
+              <h3 className="font-heading text-xl font-semibold">
+                {benefit.label}
+              </h3>
+              <p className="mt-3 font-body text-base leading-relaxed text-grey-600">
+                {benefit.description}
+              </p>
+            </div>
+          ))}
+        </div>
+
+        {/* Remaining benefits as a compact list */}
+        <div className="mt-4 grid gap-4 sm:grid-cols-2">
+          {restBenefits.map((benefit) => (
+            <div
+              key={benefit.label}
+              className="flex items-start gap-3 rounded-lg border border-grey-200 bg-white px-5 py-4"
+            >
+              <span className="mt-0.5 shrink-0 text-accent" aria-hidden="true">
                 <svg
                   className="h-5 w-5"
                   fill="currentColor"
@@ -54,73 +105,54 @@ export default function VolunteerPage() {
                   />
                 </svg>
               </span>
-              <p className="font-body text-sm leading-relaxed text-grey-600">
-                {benefit}
-              </p>
+              <div>
+                <p className="font-heading text-base font-semibold">
+                  {benefit.label}
+                </p>
+                <p className="mt-1 font-body text-sm leading-relaxed text-grey-600">
+                  {benefit.description}
+                </p>
+              </div>
             </div>
           ))}
         </div>
       </Section>
 
-      {/* What We Expect */}
-      <Section variant="grey">
-        <Heading level="h2">What we expect</Heading>
-        <Text variant="muted" className="mt-4">
-          We are looking for individuals who share our values and are
-          committed to making a difference. You do not need to be an expert
-          - what matters most is your dedication, willingness to learn, and
-          enthusiasm for the mission.
-        </Text>
-        <Text variant="muted" className="mt-4">
-          Volunteers are expected to communicate openly, meet reasonable
-          deadlines, and treat all members of the community with respect.
-          We operate on trust, and we value reliability.
-        </Text>
-      </Section>
-
-      {/* Available Teams */}
+      {/* How We Work */}
       <Section>
-        <Badge variant="accent">Teams</Badge>
+        <Badge variant="accent">Culture</Badge>
         <Heading level="h2" className="mt-4">
-          Available teams
+          How we ship great programmes
         </Heading>
-        <Text variant="muted" className="mt-4">
-          Choose the team that best fits your skills and interests. Each team
-          plays a critical role in our mission.
-        </Text>
-
-        <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-          {volunteerTeams.map((team) => (
-            <div key={team.name} className="rounded-lg border border-grey-200 p-6">
-              <h3 className="font-heading text-lg font-semibold">
-                {team.name}
+        <div className="mt-10 grid gap-x-6 gap-y-8 sm:grid-cols-2 lg:grid-cols-3">
+          {approachToWork.map((method) => (
+            <div key={method.name}>
+              <h3 className="font-heading text-base font-semibold">
+                {method.name}
               </h3>
               <p className="mt-2 font-body text-sm leading-relaxed text-grey-600">
-                {team.description}
+                {method.description}
               </p>
             </div>
           ))}
         </div>
       </Section>
 
-      {/* Role Exploration Placeholder */}
+      {/* Open Roles */}
       <Section variant="dark" id="open-roles">
-        <div className="mx-auto max-w-3xl text-center">
-          <Badge variant="accent">Coming Soon</Badge>
-          <Heading level="h2" className="mt-4">
-            Role exploration
-          </Heading>
-          <Text className="mt-4 text-grey-400">
-            Individual role pages with detailed descriptions, requirements,
-            and application forms are coming soon. In the meantime, reach out
-            to us directly.
-          </Text>
-          <div className="mt-8">
-            <Button href="/contact" variant="primary">
-              Get in Touch
-            </Button>
-          </div>
-        </div>
+        {roles.length > 0 ? (
+          <>
+            <Badge variant="accent">Now Hiring</Badge>
+            <Heading level="h2" className="mt-4">
+              Open roles
+            </Heading>
+            <div className="mt-10">
+              <RolesList roles={roles} />
+            </div>
+          </>
+        ) : (
+          <RolesList roles={[]} />
+        )}
       </Section>
 
       {/* FAQ */}
@@ -130,7 +162,9 @@ export default function VolunteerPage() {
       </Section>
 
       {/* Talent Network CTA */}
+      <Section id="talent-network">
       <NewsletterSignup source="web/volunteer" type="talent" variant="grey" />
+      </Section>
     </>
   );
 }
