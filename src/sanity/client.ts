@@ -22,7 +22,7 @@ export const client = isSanityConfigured
       projectId,
       dataset,
       apiVersion: "2024-01-01",
-      useCdn: true,
+      useCdn: false, // always fetch fresh data — pages are cached at the Next.js/CDN layer, not Sanity's
     })
   : null;
 

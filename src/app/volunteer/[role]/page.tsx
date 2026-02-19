@@ -11,6 +11,9 @@ import PortableText from "@/components/ui/PortableText";
 import AnimatedDetails from "@/components/ui/AnimatedDetails";
 import TallyRoleEmbed from "@/components/ui/TallyRoleEmbed";
 
+export const revalidate = 300; // re-fetch from Sanity every 5 min (fallback — deploy hook is the primary trigger)
+export const dynamicParams = true; // serve roles published after the last build instead of 404ing
+
 interface RolePageProps {
   params: Promise<{ role: string }>;
 }

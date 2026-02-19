@@ -16,6 +16,8 @@ import {
 } from "@/lib/data/content";
 import { getActiveRoles } from "@/sanity/client";
 
+export const revalidate = 300; // re-fetch from Sanity every 5 min (fallback — deploy hook is the primary trigger)
+
 export const metadata: Metadata = {
   title: "Volunteer",
   description:
