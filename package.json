@@ -53,6 +53,7 @@
   },
   "overrides": {
     "undici": ">=6.23.0",
-    "@swc/helpers": "0.5.18"
+    "@swc/helpers": "0.5.18",
+    "minimatch": ">=10.2.1"
   }
 }
