@@ -283,7 +283,7 @@ export default async function RolePage({ params }: RolePageProps) {
                   />
                 </svg>
               </span>
-              <Text variant="small" as="span" className="capitalize">
+              <Text variant="small" as="span">
                 {benefit}
               </Text>
             </li>
