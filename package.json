@@ -51,7 +51,7 @@
     "vitest": "^3.2.4"
   },
   "overrides": {
-    "undici": ">=6.23.0",
+    "undici": ">=7.24.0",
     "@swc/helpers": "0.5.18",
     "minimatch": ">=10.2.3"
   }
