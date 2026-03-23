@@ -53,6 +53,7 @@
   "overrides": {
     "undici": ">=7.24.0",
     "@swc/helpers": "0.5.18",
-    "minimatch": ">=10.2.3"
+    "minimatch": ">=10.2.3",
+    "js-yaml": ">=3.14.2"
   }
 }
