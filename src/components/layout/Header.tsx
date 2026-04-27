@@ -130,7 +130,8 @@ export default function Header() {
     (pathname.startsWith("/volunteer/") && pathname !== "/volunteer");
 
   // Fully dark header for pages with black backgrounds
-  const isDarkHeader = pathname === "/enrichment";
+  const isCampaignHeader = ["/", "/mun"].includes(pathname);
+  const isDarkHeader = isCampaignHeader || pathname === "/enrichment";
 
   const navLinkClass = isDarkHeader
     ? "text-sm font-semibold text-grey-400 transition-colors hover:text-white"
@@ -197,7 +198,7 @@ export default function Header() {
             : "translate-y-0 opacity-100"
         } ${
           isDarkHeader
-            ? scrolled || activeDropdown
+            ? scrolled || activeDropdown || isCampaignHeader
               ? "bg-black/90 backdrop-blur-md"
               : "bg-transparent"
             : scrolled || activeDropdown || forceSolid
@@ -217,7 +218,7 @@ export default function Header() {
                 alt="Institute Alterna"
                 width={120}
                 height={32}
-                className="h-7 w-auto"
+                className={`h-7 w-auto ${isDarkHeader ? "brightness-0 invert" : ""}`}
                 priority
               />
             </Link>

@@ -37,8 +37,8 @@ export const centreNavItems: NavItem[] = [
         "The world's first competitive Model United Nations centred in artificial intelligence legislation and policy.",
       links: [
         {
-          label: "AAIMUN 2026",
-          href: "https://forms.alterna.dev/mun/26/interest?sauce=websiteHeader",
+          label: "Register on MyMUN",
+          href: "https://duckduckgo.com",
           external: true,
         },
         { label: "About AAIMUN", href: "/mun" },
@@ -108,7 +108,7 @@ export const programmes: Programme[] = [
     name: "AAIMUN",
     tagline: "AI meets global policy",
     description:
-      "The world's first competitive Model United Nations centred in artificial intelligence legislation, in collaboration with the Future Summit Alliance under the UNx Conference league.",
+      "The world's first competitive Model United Nations centred in artificial intelligence legislation, in collaboration with Futures Summit Alliance under the UNx Conference league.",
     href: "/mun",
   },
   {
