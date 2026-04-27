@@ -2,9 +2,9 @@ name: Checks and Tests
 
 on:
   push:
-    branches: ['*']
+    branches: ['**']
   pull_request:
-    branches: [main]
+    branches: ['**']
 
 jobs:
   lint:

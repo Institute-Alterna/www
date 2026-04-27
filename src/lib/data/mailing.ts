@@ -1,28 +1,11 @@
 /**
  * Mailing configuration
- * Centralizes all mailing list and subscription settings
+ * Centralises mailing list and subscription settings.
  */
 
-/* ------------------------------------------------------------------ */
-/*  Sources                                                            */
-/* ------------------------------------------------------------------ */
-
 /**
- * Subscription sources — tracks where signups originated.
+ * Subscription sources track where signups originated.
  * Stored in contact properties for segmentation.
- *
- * To add a new source: append to this array and update the Source type export.
- *
- * Example: Adding a "web/events" source
- * ```
- * export const VALID_SOURCES = [
- *   "web/landing",
- *   "web/aaimun",
- *   "web/chs",
- *   "web/volunteer",
- *   "web/events",  // ← new entry
- * ] as const;
- * ```
  */
 export const VALID_SOURCES = [
   "web/landing",
@@ -33,28 +16,10 @@ export const VALID_SOURCES = [
 
 export type Source = (typeof VALID_SOURCES)[number];
 
-/* ------------------------------------------------------------------ */
-/*  Mailing Lists                                                      */
-/* ------------------------------------------------------------------ */
-
 /**
  * Mailing list configuration.
  * Maps subscription types to env var keys for Loops mailing list IDs.
  * Multiple env vars means the contact is added to all those lists.
- *
- * To add a new type:
- * 1. Add entry here mapping to env var key(s)
- * 2. Add the env var(s) to .env.example and Vercel
- * 3. Update MAILING_COPY below with heading, description, and success message
- *
- * Example: Adding a "partner" type that goes to its own list
- * ```
- * export const MAILING_LIST_CONFIG = {
- *   general: ["LOOPS_GENERAL_MAILING_LIST_ID"],
- *   talent: ["LOOPS_GENERAL_MAILING_LIST_ID", "LOOPS_TALENT_MAILING_LIST_ID"],
- *   partner: ["LOOPS_PARTNER_MAILING_LIST_ID"],  // ← new entry
- * } as const;
- * ```
  */
 export const MAILING_LIST_CONFIG = {
   general: ["LOOPS_GENERAL_MAILING_LIST_ID"],
@@ -62,10 +27,6 @@ export const MAILING_LIST_CONFIG = {
 } as const;
 
 export type ListType = keyof typeof MAILING_LIST_CONFIG;
-
-/* ------------------------------------------------------------------ */
-/*  UI Copy                                                            */
-/* ------------------------------------------------------------------ */
 
 /**
  * Copy configuration for each mailing list type.
@@ -88,3 +49,9 @@ export const MAILING_COPY: Record<
     success: "You\u2019re all set! You\u2019ll hear from us whenever new roles open.",
   },
 };
+
+const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
+
+export function isValidEmail(email: string): boolean {
+  return EMAIL_REGEX.test(email);
+}

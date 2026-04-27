@@ -28,7 +28,6 @@ describe("Sanity client", () => {
 
     warnSpy.mockRestore();
 
-    // Restore env vars
     if (originalProjectId) process.env.SANITY_PROJECT_ID = originalProjectId;
     if (originalDataset) process.env.SANITY_DATASET = originalDataset;
   });

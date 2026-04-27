@@ -1,7 +1,5 @@
-import { groq } from "next-sanity";
-
 /** Card-level fields for the volunteer listing page */
-export const activeRolesQuery = groq`
+export const activeRolesQuery = `
   *[_type == "role" && active == true] | order(name asc) {
     _id,
     "slug": slug.current,
@@ -14,7 +12,7 @@ export const activeRolesQuery = groq`
 `;
 
 /** Full role document by slug */
-export const roleBySlugQuery = groq`
+export const roleBySlugQuery = `
   *[_type == "role" && slug.current == $slug && active == true][0] {
     _id,
     _type,
@@ -38,6 +36,6 @@ export const roleBySlugQuery = groq`
 `;
 
 /** All active slugs for generateStaticParams */
-export const allRoleSlugsQuery = groq`
+export const allRoleSlugsQuery = `
   *[_type == "role" && active == true].slug.current
 `;

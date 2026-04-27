@@ -10,12 +10,19 @@ import Container from "@/components/ui/Container";
 import PortableText from "@/components/ui/PortableText";
 import AnimatedDetails from "@/components/ui/AnimatedDetails";
 import TallyRoleEmbed from "@/components/ui/TallyRoleEmbed";
+import type { PortableTextBlock } from "@/lib/types";
 
-export const revalidate = 300; // re-fetch from Sanity every 5 min (fallback — deploy hook is the primary trigger)
+export const revalidate = 3600;
 export const dynamicParams = true; // serve roles published after the last build instead of 404ing
 
 interface RolePageProps {
   params: Promise<{ role: string }>;
+}
+
+function isStringArray(
+  items: string[] | PortableTextBlock[]
+): items is string[] {
+  return items.every((item) => typeof item === "string");
 }
 
 function capitalise(str: string): string {
@@ -140,9 +147,9 @@ export default async function RolePage({ params }: RolePageProps) {
           <div>
             <Heading level="h3">You&apos;ll get to</Heading>
             {role.responsibilities.length > 0 &&
-            typeof role.responsibilities[0] === "string" ? (
+            isStringArray(role.responsibilities) ? (
               <ul className="mt-6 space-y-3">
-                {(role.responsibilities as string[]).map((item) => (
+                {role.responsibilities.map((item) => (
                   <li key={item} className="flex items-start gap-3">
                     <span
                       className="mt-1 shrink-0 text-accent"
@@ -167,7 +174,10 @@ export default async function RolePage({ params }: RolePageProps) {
                 ))}
               </ul>
             ) : (
-              <PortableText value={role.responsibilities} className="mt-6" />
+              <PortableText
+                value={role.responsibilities as PortableTextBlock[]}
+                className="mt-6"
+              />
             )}
           </div>
           <div>

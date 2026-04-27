@@ -3,19 +3,10 @@ import { LoopsClient } from "loops";
 import {
   VALID_SOURCES,
   MAILING_LIST_CONFIG,
+  isValidEmail,
   type Source,
   type ListType,
 } from "@/lib/data/mailing";
-
-/* ------------------------------------------------------------------ */
-/*  Configuration                                                      */
-/* ------------------------------------------------------------------ */
-
-const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
-
-/* ------------------------------------------------------------------ */
-/*  Singleton Loops client (reused across warm invocations)            */
-/* ------------------------------------------------------------------ */
 
 let loopsClient: LoopsClient | null = null;
 
@@ -24,10 +15,6 @@ function getLoopsClient(): LoopsClient | null {
   if (!loopsClient) loopsClient = new LoopsClient(process.env.LOOPS_API_KEY);
   return loopsClient;
 }
-
-/* ------------------------------------------------------------------ */
-/*  Rate limiter (in-memory, per IP, resets on cold start)             */
-/* ------------------------------------------------------------------ */
 
 const RATE_WINDOW_MS = 60_000;
 const RATE_MAX_REQUESTS = 5;
@@ -54,10 +41,6 @@ function isRateLimited(ip: string): boolean {
   entry.count++;
   return entry.count > RATE_MAX_REQUESTS;
 }
-
-/* ------------------------------------------------------------------ */
-/*  Validators                                                         */
-/* ------------------------------------------------------------------ */
 
 function isValidSource(source: unknown): source is Source {
   return (
@@ -86,10 +69,6 @@ function isAllowedOrigin(request: NextRequest): boolean {
   }
 }
 
-/* ------------------------------------------------------------------ */
-/*  Mailing list resolver                                              */
-/* ------------------------------------------------------------------ */
-
 /**
  * Resolves mailing list IDs from env vars based on subscription type.
  * Returns a map of list IDs to subscribe the contact to.
@@ -107,10 +86,6 @@ function getMailingLists(type: ListType): Record<string, boolean> {
 
   return lists;
 }
-
-/* ------------------------------------------------------------------ */
-/*  Handler                                                            */
-/* ------------------------------------------------------------------ */
 
 export async function POST(request: NextRequest) {
   // CSRF: reject cross-origin requests
@@ -163,7 +138,6 @@ export async function POST(request: NextRequest) {
 
   const { email: rawEmail, source, type: rawType } = body as Record<string, unknown>;
 
-  // Trim before validating (#9)
   if (typeof rawEmail !== "string") {
     return NextResponse.json(
       { success: false, error: "Please enter a valid email address." },
@@ -173,7 +147,7 @@ export async function POST(request: NextRequest) {
 
   const email = rawEmail.trim().toLowerCase();
 
-  if (!EMAIL_REGEX.test(email)) {
+  if (!isValidEmail(email)) {
     return NextResponse.json(
       { success: false, error: "Please enter a valid email address." },
       { status: 400 }
@@ -204,7 +178,7 @@ export async function POST(request: NextRequest) {
     mailingLists,
   };
 
-  // Lead with updateContact (upsert) — avoids two calls for returning subscribers (#5)
+  // Try the upsert path first to avoid an extra read for returning subscribers.
   try {
     await loops.updateContact(contactParams);
     return NextResponse.json({ success: true });

@@ -4,12 +4,11 @@ const CIPHER_CHARS = [
   "{", "}", "#", "@", "$", "%", "&", "^",
 ];
 
-export function randomCipherChar(): string {
+function randomCipherChar(): string {
   return CIPHER_CHARS[Math.floor(Math.random() * CIPHER_CHARS.length)];
 }
 
-export function cycleChar(current: string, speed: number, dt: number): string {
-  // Higher speed = more frequent character changes
+function cycleChar(current: string, speed: number, dt: number): string {
   if (Math.random() < speed * dt) {
     return randomCipherChar();
   }

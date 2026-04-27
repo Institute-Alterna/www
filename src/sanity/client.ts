@@ -1,4 +1,4 @@
-import { createClient } from "next-sanity";
+import { createClient } from "@sanity/client";
 import type { RoleCardData, SanityRole } from "@/lib/types";
 import {
   activeRolesQuery,
@@ -17,12 +17,12 @@ if (!isSanityConfigured) {
   );
 }
 
-export const client = isSanityConfigured
+const client = isSanityConfigured
   ? createClient({
       projectId,
       dataset,
       apiVersion: "2024-01-01",
-      useCdn: false, // always fetch fresh data — pages are cached at the Next.js/CDN layer, not Sanity's
+      useCdn: false, // Pages are cached at the Next.js/CDN layer.
     })
   : null;
 

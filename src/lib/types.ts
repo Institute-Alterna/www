@@ -1,4 +1,6 @@
-export interface NavLink {
+import type { PortableTextBlock } from "@portabletext/react";
+
+interface NavLink {
   label: string;
   href: string;
   external?: boolean;
@@ -87,20 +89,18 @@ export interface StrategistRole {
   description: string;
 }
 
-// Sanity CMS — Volunteer Roles
-
-export interface RoleCommunication {
+interface RoleCommunication {
   asynchronous: boolean;
   collaborationFrequency: string;
   language: string;
   liveCollaboration: boolean;
 }
 
-export interface RoleDuration {
+interface RoleDuration {
   ongoing: boolean;
 }
 
-export interface RoleCompensation {
+interface RoleCompensation {
   amount: number;
   benefits: string[];
   salary: boolean;
@@ -128,7 +128,7 @@ export interface SanityRole {
   region: string;
   workload: number;
   overview: PortableTextBlock[];
-  responsibilities: string[];
+  responsibilities: string[] | PortableTextBlock[];
   requirements: string[];
   whatYouWillLearn: string[];
   exceptionalPoints?: string[];
@@ -146,5 +146,4 @@ export interface ShowcaseSlide {
   alt: string;
 }
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-export type PortableTextBlock = any;
+export type { PortableTextBlock };

@@ -7,7 +7,12 @@ import FadeInView from "@/components/ui/FadeInView";
 import Heading from "@/components/ui/Heading";
 import Text from "@/components/ui/Text";
 import { cn } from "@/lib/utils";
-import { MAILING_COPY, type Source, type ListType } from "@/lib/data/mailing";
+import {
+  MAILING_COPY,
+  isValidEmail,
+  type Source,
+  type ListType,
+} from "@/lib/data/mailing";
 
 type FormStatus = "idle" | "loading" | "success" | "error";
 type Variant = "light" | "dark" | "grey";
@@ -17,8 +22,6 @@ interface NewsletterSignupProps {
   type?: ListType;
   variant?: Variant;
 }
-
-const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
 
 function getStyles(variant: Variant) {
   switch (variant) {
@@ -76,7 +79,7 @@ export default function NewsletterSignup({
     if (status === "loading" || status === "success") return;
 
     const trimmed = email.trim();
-    if (!EMAIL_REGEX.test(trimmed)) {
+    if (!isValidEmail(trimmed)) {
       setStatus("error");
       setErrorMessage("Please enter a valid email address.");
       return;
