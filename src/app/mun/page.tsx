@@ -6,8 +6,14 @@ import NewsletterSignup from "@/components/sections/NewsletterSignup";
 import Button from "@/components/ui/Button";
 import Container from "@/components/ui/Container";
 import FadeInView from "@/components/ui/FadeInView";
+import RedactedText from "@/components/ui/RedactedText";
 import SectionDivider from "@/components/ui/SectionDivider";
 import StaggerContainer from "@/components/ui/StaggerContainer";
+import { MYMUN_URL } from "@/lib/data/mun";
+import {
+  isRedactedSegment,
+  type RedactableTextSegment,
+} from "@/lib/redaction";
 
 export const metadata: Metadata = {
   title: "AAIMUN 2026",
@@ -101,20 +107,10 @@ const pointBands: PointBand[] = [
   { award: "All participants", points: "1 point" },
 ];
 
-type TerminalSegment =
-  | { text: string; redactedText?: never; redactionLabel?: never }
-  | { text?: never; redactedText: string; redactionLabel: string };
-
 type TerminalLog = {
   time: string;
-  segments: TerminalSegment[];
+  segments: RedactableTextSegment[];
 };
-
-function isRedactedSegment(
-  segment: TerminalSegment,
-): segment is Extract<TerminalSegment, { redactedText: string }> {
-  return segment.redactedText !== undefined;
-}
 
 // Add future terminal logs here. Redacted strings remain editable in source.
 const terminalLogs: TerminalLog[] = [
@@ -195,30 +191,6 @@ const terminalLogs: TerminalLog[] = [
   },
 ];
 
-const MYMUN_URL = "https://duckduckgo.com";
-
-function InlineRedaction({
-  label,
-  text,
-  tone = "light",
-}: {
-  label: string;
-  text: string;
-  tone?: "light" | "dark";
-}) {
-  return (
-    <span
-      className={
-        tone === "dark"
-          ? "inline-block h-[0.85em] select-none bg-black align-middle"
-          : "inline-block h-[0.85em] select-none bg-white align-middle"
-      }
-      style={{ width: `${text.length}ch` }}
-      aria-label={label}
-    />
-  );
-}
-
 function TerminalLine({ log }: { log: TerminalLog }) {
   return (
     <li className="grid grid-cols-[8rem_1fr] gap-5">
@@ -228,7 +200,7 @@ function TerminalLine({ log }: { log: TerminalLog }) {
       <span>
         {log.segments.map((segment, index) =>
           isRedactedSegment(segment) ? (
-            <InlineRedaction
+            <RedactedText
               key={`${log.time}-redaction-${index}`}
               label={segment.redactionLabel}
               text={segment.redactedText}
@@ -264,9 +236,6 @@ export default function AAIMUNPage() {
       <StickyRegisterCta />
 
       <AAIMUNCampaignHero variant="page" />
-
-      {/* Sentinel: triggers sticky CTA once hero leaves viewport */}
-      <div id="hero-sentinel" aria-hidden="true" />
 
       {/* 01 / CONFERENCE */}
       <section
@@ -550,12 +519,12 @@ export default function AAIMUNPage() {
             <div className="mx-auto max-w-4xl border border-white/10 bg-black p-5 font-mono text-[11px] leading-7 text-white/60 md:p-7">
               <div className="mb-5 flex items-center justify-between gap-4 border-b border-white/10 pb-4">
                 <p className="uppercase tracking-[0.22em] text-white/45">
-                  <InlineRedaction label="redacted system" text="Embassy" />{" "}
+                  <RedactedText label="redacted system" text="Embassy" />{" "}
                   simulation trace
                 </p>
                 <p className="uppercase tracking-[0.22em] text-aaimun">
                   Awaiting{" "}
-                  <InlineRedaction
+                  <RedactedText
                     label="redacted unlock state"
                     text="unlock"
                   />

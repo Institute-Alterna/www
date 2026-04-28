@@ -2,17 +2,14 @@
 
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
-
-const MYMUN_URL = "https://duckduckgo.com";
+import { MYMUN_URL } from "@/lib/data/mun";
 
 export default function StickyRegisterCta() {
   const [visible, setVisible] = useState(false);
   const reduced = useReducedMotion();
 
   useEffect(() => {
-    const target =
-      document.getElementById("aaimun-hero") ??
-      document.getElementById("hero-sentinel");
+    const target = document.getElementById("aaimun-hero");
     if (!target) return;
 
     const obs = new IntersectionObserver(

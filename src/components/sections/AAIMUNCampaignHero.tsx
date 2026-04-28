@@ -6,23 +6,15 @@ import Link from "next/link";
 import AaimunWordmark from "@/components/sections/AaimunWordmark";
 import Button from "@/components/ui/Button";
 import Container from "@/components/ui/Container";
+import RedactedText from "@/components/ui/RedactedText";
+import { MYMUN_URL } from "@/lib/data/mun";
+import {
+  isRedactedSegment,
+  type RedactableTextSegment,
+} from "@/lib/redaction";
 
 const EASE = [0.22, 1, 0.36, 1] as const;
-const MYMUN_URL = "https://duckduckgo.com";
-
-type StatusLine =
-  | {
-      id: string;
-      text: string;
-      redactedText?: never;
-      redactionLabel?: never;
-    }
-  | {
-      id: string;
-      text?: never;
-      redactedText: string;
-      redactionLabel: string;
-    };
+type StatusLine = { id: string } & RedactableTextSegment;
 
 // Add or reorder hero status points here.
 const statusLines: StatusLine[] = [
@@ -42,22 +34,6 @@ const statusLines: StatusLine[] = [
   { id: "schedule", text: "FULL SCHEDULE FORTHCOMING" },
 ];
 
-function isRedactedStatusLine(
-  line: StatusLine,
-): line is Extract<StatusLine, { redactedText: string }> {
-  return line.redactedText !== undefined;
-}
-
-function RedactedStatusText({ label, text }: { label: string; text: string }) {
-  return (
-    <span
-      className="inline-block h-[0.85em] select-none bg-black align-middle"
-      style={{ width: `${text.length}ch` }}
-      aria-label={label}
-    />
-  );
-}
-
 function StatusStack() {
   return (
     <ol
@@ -72,10 +48,11 @@ function StatusStack() {
           <span className="shrink-0 text-grey-600" aria-hidden="true">
             {String(i + 1).padStart(2, "0")}
           </span>
-          {isRedactedStatusLine(line) ? (
-            <RedactedStatusText
+          {isRedactedSegment(line) ? (
+            <RedactedText
               label={line.redactionLabel}
               text={line.redactedText}
+              tone="dark"
             />
           ) : (
             <span>{line.text}</span>

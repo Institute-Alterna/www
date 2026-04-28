@@ -13,6 +13,7 @@ import type {
   StrategistRole,
   ShowcaseSlide,
 } from "@/lib/types";
+import { MYMUN_URL } from "@/lib/data/mun";
 
 // ─── Site Configuration ───
 
@@ -38,7 +39,7 @@ export const centreNavItems: NavItem[] = [
       links: [
         {
           label: "Register on MyMUN",
-          href: "https://duckduckgo.com",
+          href: MYMUN_URL,
           external: true,
         },
         { label: "About AAIMUN", href: "/mun" },
