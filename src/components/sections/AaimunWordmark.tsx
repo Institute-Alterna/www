@@ -9,13 +9,30 @@ const EASE = [0.22, 1, 0.36, 1] as const;
 interface AaimunWordmarkProps {
   className?: string;
   delay?: number;
+  animate?: boolean;
 }
 
 export default function AaimunWordmark({
   className,
   delay = 0.1,
+  animate = true,
 }: AaimunWordmarkProps) {
   const reduced = useReducedMotion();
+
+  if (!animate) {
+    return (
+      <div className={cn("inline-block", className)}>
+        <Image
+          src="/mun/aaimun-wordmark.svg"
+          alt="AAIMUN"
+          width={126}
+          height={35}
+          className="h-full w-auto"
+          priority
+        />
+      </div>
+    );
+  }
 
   return (
     <motion.div

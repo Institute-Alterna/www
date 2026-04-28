@@ -19,6 +19,7 @@ interface ButtonAsLink extends ButtonBaseProps {
   href: string;
   external?: boolean;
   fullReload?: boolean;
+  showExternalIcon?: boolean;
   onClick?: React.MouseEventHandler<HTMLAnchorElement>;
 }
 
@@ -65,6 +66,7 @@ const buttonBaseKeys = new Set([
   "href",
   "external",
   "fullReload",
+  "showExternalIcon",
 ]);
 
 function getButtonProps(
@@ -95,7 +97,7 @@ export default function Button(props: ButtonProps) {
   );
 
   if (props.href !== undefined) {
-    const { href, external, fullReload } = props;
+    const { href, external, fullReload, showExternalIcon = true } = props;
     if (external) {
       return (
         <a
@@ -106,7 +108,7 @@ export default function Button(props: ButtonProps) {
           onClick={props.onClick}
         >
           {children}
-          <ExternalIcon />
+          {showExternalIcon ? <ExternalIcon /> : null}
         </a>
       );
     }

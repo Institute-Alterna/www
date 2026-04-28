@@ -112,8 +112,11 @@ describe("AAIMUNCampaignHero", () => {
 
   it("renders status lines", () => {
     render(<AAIMUNCampaignHero />);
-    expect(screen.getByText("ONLINE FORMAT CONFIRMED")).toBeInTheDocument();
+    expect(screen.getByText("ALL-ONLINE CONFERENCE")).toBeInTheDocument();
     expect(screen.getByText("UNx SEASON 2 OPENING")).toBeInTheDocument();
+    expect(
+      screen.getAllByLabelText("unreleased feature information redacted")
+    ).toHaveLength(2);
   });
 
   it("shows Learn more link in home variant", () => {
