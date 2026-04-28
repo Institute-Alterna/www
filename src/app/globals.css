@@ -11,6 +11,12 @@
   --color-black: #0d0d0d;
   --color-white: #fafafa;
 
+  /* AAIMUN campaign accents */
+  --color-aaimun: #0097b2;
+  --color-aaimun-soft: #e6f4f7;
+  --color-aaimun-deep: #006c80;
+  --color-fsa: #f15a29;
+
   /* Greys */
   --color-grey-900: #1a1a1a;
   --color-grey-800: #262626;
@@ -38,6 +44,11 @@
   --color-grey-400: var(--color-grey-400);
   --color-grey-200: var(--color-grey-200);
   --color-grey-100: var(--color-grey-100);
+
+  --color-aaimun: var(--color-aaimun);
+  --color-aaimun-soft: var(--color-aaimun-soft);
+  --color-aaimun-deep: var(--color-aaimun-deep);
+  --color-fsa: var(--color-fsa);
 
   --font-heading: var(--font-dm-sans);
   --font-body: var(--font-onest);
@@ -85,4 +96,22 @@ body {
 
 .skip-to-content:focus {
   left: 0;
+}
+
+/* Subtle grain texture overlay — place on section/page roots */
+.grain-overlay {
+  position: relative;
+  isolation: isolate;
+}
+
+.grain-overlay::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: -1;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23g)'/%3E%3C/svg%3E");
+  background-size: 200px 200px;
+  opacity: 0.035;
+  mix-blend-mode: multiply;
 }
