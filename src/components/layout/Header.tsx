@@ -277,7 +277,13 @@ export default function Header() {
               return (
                 <div
                   key={activeDropdown}
-                  onMouseEnter={() => handleDropdownEnter(activeDropdown)}
+                  onMouseEnter={() => {
+                    if (leaveTimeout.current) {
+                      clearTimeout(leaveTimeout.current);
+                      leaveTimeout.current = null;
+                    }
+                    setActiveDropdown(activeDropdown);
+                  }}
                   onMouseLeave={handleDropdownLeave}
                 >
                   <MegaMenu
