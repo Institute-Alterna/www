@@ -13,6 +13,7 @@ import type {
   StrategistRole,
   ShowcaseSlide,
 } from "@/lib/types";
+import { MYMUN_URL } from "@/lib/data/mun";
 
 // ─── Site Configuration ───
 
@@ -37,8 +38,8 @@ export const centreNavItems: NavItem[] = [
         "The world's first competitive Model United Nations centred in artificial intelligence legislation and policy.",
       links: [
         {
-          label: "AAIMUN 2026",
-          href: "https://forms.alterna.dev/mun/26/interest?sauce=websiteHeader",
+          label: "Register on MyMUN",
+          href: MYMUN_URL,
           external: true,
         },
         { label: "About AAIMUN", href: "/mun" },
@@ -108,7 +109,7 @@ export const programmes: Programme[] = [
     name: "AAIMUN",
     tagline: "AI meets global policy",
     description:
-      "The world's first competitive Model United Nations centred in artificial intelligence legislation, in collaboration with the Future Summit Alliance under the UNx Conference league.",
+      "The world's first competitive Model United Nations centred in artificial intelligence legislation, in collaboration with Futures Summit Alliance under the UNx Conference league.",
     href: "/mun",
   },
   {
@@ -465,11 +466,6 @@ export const socialLinks: SocialLink[] = [
     href: "https://github.com/institute-alterna",
     label: "View our code on GitHub",
   },
-  {
-    platform: "Bluesky",
-    href: "https://bsky.app/profile/alterna.dev",
-    label: "Follow us on Bluesky",
-  },
 ];
 
 // ─── Footer Navigation ───
@@ -483,6 +479,7 @@ export const footerProgrammes: NavItem[] = [
 export const footerOrganisation: NavItem[] = [
   { label: "About", href: "/about" },
   { label: "Volunteer", href: "/volunteer" },
+  { label: "Newsroom", href: "/newsroom" },
   {
     label: "Donate",
     href: "https://hcb.hackclub.com/donations/start/alterna",

@@ -146,4 +146,61 @@ export interface ShowcaseSlide {
   alt: string;
 }
 
+// ─── Newsroom / Press Releases ───
+
+/** A Sanity image field, optionally with editorial alt/caption/credit metadata */
+export interface SanityImage {
+  _type?: "image";
+  asset: { _ref: string; _type?: "reference" };
+  alt?: string;
+  caption?: string;
+  credit?: string;
+  hotspot?: { x: number; y: number; height: number; width: number };
+  crop?: { top: number; bottom: number; left: number; right: number };
+}
+
+export interface MediaContact {
+  name: string;
+  title?: string;
+  email: string;
+}
+
+export interface PressReleaseSeo {
+  metaTitle?: string;
+  metaDescription?: string;
+  ogImage?: SanityImage;
+}
+
+/** Subset of fields used for newsroom listing cards */
+export interface PressReleaseCard {
+  _id: string;
+  slug: string;
+  eyebrow: string;
+  headline: string;
+  deck: string;
+  publishedAt: string;
+  location?: string;
+  featured: boolean;
+  heroImage: SanityImage;
+}
+
+/** Full Sanity press release document */
+export interface PressRelease {
+  _id: string;
+  slug: string;
+  eyebrow: string;
+  headline: string;
+  deck: string;
+  publishedAt: string;
+  location: string;
+  author?: string;
+  heroImage: SanityImage;
+  body: PortableTextBlock[];
+  boilerplate: PortableTextBlock[];
+  mediaContacts: MediaContact[];
+  seo?: PressReleaseSeo;
+  featured: boolean;
+  relatedReleases?: PressReleaseCard[];
+}
+
 export type { PortableTextBlock };

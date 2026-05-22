@@ -129,7 +129,6 @@ export default function Header() {
     darkHeroPages.includes(pathname) ||
     (pathname.startsWith("/volunteer/") && pathname !== "/volunteer");
 
-  // Fully dark header for pages with black backgrounds
   const isDarkHeader = pathname === "/enrichment";
 
   const navLinkClass = isDarkHeader

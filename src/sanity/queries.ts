@@ -39,3 +39,63 @@ export const roleBySlugQuery = `
 export const allRoleSlugsQuery = `
   *[_type == "role" && active == true].slug.current
 `;
+
+/** Card-level fields for the newsroom listing, newest first */
+export const pressReleasesQuery = `
+  *[_type == "pressRelease" && defined(slug.current)] | order(publishedAt desc) {
+    _id,
+    "slug": slug.current,
+    eyebrow,
+    headline,
+    deck,
+    publishedAt,
+    location,
+    featured,
+    heroImage
+  }
+`;
+
+/** Full press release document by slug, with internal link refs resolved */
+export const pressReleaseBySlugQuery = `
+  *[_type == "pressRelease" && slug.current == $slug][0] {
+    _id,
+    eyebrow,
+    headline,
+    "slug": slug.current,
+    deck,
+    publishedAt,
+    location,
+    author,
+    heroImage,
+    body[] {
+      ...,
+      markDefs[] {
+        ...,
+        _type == "link" => {
+          ...,
+          internalRef->{ _type, "slug": slug.current }
+        }
+      }
+    },
+    boilerplate,
+    mediaContacts,
+    seo,
+    featured,
+    relatedReleases[]->{
+      _id,
+      "slug": slug.current,
+      eyebrow,
+      headline,
+      deck,
+      publishedAt,
+      location,
+      featured,
+      heroImage
+    }
+  }
+`;
+
+/** All press release slugs for generateStaticParams */
+export const allPressReleaseSlugsQuery = `
+  *[_type == "pressRelease" && defined(slug.current)].slug.current
+`;

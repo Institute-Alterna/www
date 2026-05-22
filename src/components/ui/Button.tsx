@@ -10,15 +10,16 @@ interface ButtonBaseProps {
 
 interface ButtonAsButton
   extends ButtonBaseProps,
-    Omit<React.ButtonHTMLAttributes<HTMLButtonElement>, keyof ButtonBaseProps> {
+    Omit<React.ButtonHTMLAttributes<HTMLButtonElement>, keyof ButtonBaseProps | "href"> {
   href?: undefined;
-  external?: undefined;
+  external?: never;
 }
 
 interface ButtonAsLink extends ButtonBaseProps {
   href: string;
   external?: boolean;
   fullReload?: boolean;
+  showExternalIcon?: boolean;
   onClick?: React.MouseEventHandler<HTMLAnchorElement>;
 }
 
@@ -37,6 +38,19 @@ const sizeStyles = {
   default: "px-5 py-2.5 text-sm font-medium",
   lg: "px-7 py-3 text-base font-medium",
 };
+
+function getButtonClasses({
+  variant = "primary",
+  size = "default",
+  className,
+}: Pick<ButtonBaseProps, "variant" | "size" | "className">) {
+  return cn(
+    "inline-flex items-center justify-center rounded-lg font-body",
+    variantStyles[variant],
+    variant !== "ghost" && sizeStyles[size],
+    className
+  );
+}
 
 function ExternalIcon() {
   return (
@@ -57,45 +71,21 @@ function ExternalIcon() {
   );
 }
 
-const buttonBaseKeys = new Set([
-  "variant",
-  "size",
-  "children",
-  "className",
-  "href",
-  "external",
-  "fullReload",
-]);
-
-function getButtonProps(
-  props: ButtonAsButton
-): React.ButtonHTMLAttributes<HTMLButtonElement> {
-  const result: Record<string, unknown> = {};
-  for (const key in props) {
-    if (!buttonBaseKeys.has(key)) {
-      result[key] = (props as unknown as Record<string, unknown>)[key];
-    }
-  }
-  return result;
-}
-
 export default function Button(props: ButtonProps) {
-  const {
-    variant = "primary",
-    size = "default",
-    children,
-    className,
-  } = props;
-
-  const classes = cn(
-    "inline-flex items-center justify-center rounded-lg font-body",
-    variantStyles[variant],
-    variant !== "ghost" && sizeStyles[size],
-    className
-  );
-
   if (props.href !== undefined) {
-    const { href, external, fullReload } = props;
+    const {
+      href,
+      external,
+      fullReload,
+      showExternalIcon = true,
+      children,
+      onClick,
+      variant,
+      size,
+      className,
+    } = props;
+    const classes = getButtonClasses({ variant, size, className });
+
     if (external) {
       return (
         <a
@@ -103,16 +93,16 @@ export default function Button(props: ButtonProps) {
           className={classes}
           target="_blank"
           rel="noopener noreferrer"
-          onClick={props.onClick}
+          onClick={onClick}
         >
           {children}
-          <ExternalIcon />
+          {showExternalIcon ? <ExternalIcon /> : null}
         </a>
       );
     }
     if (fullReload) {
       return (
-        <a href={href} className={classes} onClick={props.onClick}>
+        <a href={href} className={classes} onClick={onClick}>
           {children}
         </a>
       );
@@ -124,8 +114,11 @@ export default function Button(props: ButtonProps) {
     );
   }
 
+  const { variant, size, children, className, ...buttonProps } = props;
+  const classes = getButtonClasses({ variant, size, className });
+
   return (
-    <button className={classes} {...getButtonProps(props)}>
+    <button className={classes} {...buttonProps}>
       {children}
     </button>
   );
