@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import AAIMUNCampaignHero from "@/components/sections/AAIMUNCampaignHero";
 import MunProgressRail from "@/components/sections/MunProgressRail";
 import StickyRegisterCta from "@/components/sections/StickyRegisterCta";
@@ -277,6 +278,16 @@ export default function AAIMUNPage() {
               </div>
             ))}
           </div>
+
+          <FadeInView delay={0.1}>
+            <Link
+              href="/mun/agenda"
+              className="mt-8 inline-flex items-center gap-2 font-mono text-[11px] uppercase tracking-[0.22em] text-aaimun transition-colors hover:text-white"
+            >
+              View the full agenda &amp; position paper guidelines
+              <span aria-hidden="true">→</span>
+            </Link>
+          </FadeInView>
         </Container>
       </section>
 
@@ -407,6 +418,16 @@ export default function AAIMUNPage() {
                 </p>
               ))}
             </div>
+          </FadeInView>
+
+          <FadeInView delay={0.15}>
+            <Link
+              href="/mun/agenda"
+              className="mt-8 inline-flex items-center gap-2 font-mono text-[11px] uppercase tracking-[0.22em] text-aaimun transition-colors hover:text-white"
+            >
+              View the full agenda &amp; position paper guidelines
+              <span aria-hidden="true">→</span>
+            </Link>
           </FadeInView>
         </Container>
       </section>

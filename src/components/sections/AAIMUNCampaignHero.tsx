@@ -171,6 +171,12 @@ export default function AAIMUNCampaignHero({
                   Explore the announcement
                 </Link>
               )}
+              <Link
+                href="/mun/agenda"
+                className="inline-flex min-h-12 items-center font-body text-base font-medium text-grey-700 transition-colors hover:text-aaimun sm:ml-3"
+              >
+                View the agenda
+              </Link>
             </motion.div>
           </div>
 

@@ -43,6 +43,7 @@ export const centreNavItems: NavItem[] = [
           external: true,
         },
         { label: "About AAIMUN", href: "/mun" },
+        { label: "Agenda", href: "/mun/agenda" },
       ],
     },
   },
