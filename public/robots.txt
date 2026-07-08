@@ -1,0 +1,11 @@
+# Allow general web crawlers to index public pages.
+# See: https://developers.google.com/search/docs/crawling-indexing/robots/create-robots-txt
+User-agent: *
+Allow: /
+Disallow: /api/
+
+# Atlassian Teamwork Graph custom website connector (Rovo crawler).
+# See: https://support.atlassian.com/organization-administration/docs/connect-custom-website-to-teamwork-graph/
+User-agent: atlassian-bot
+Allow: /
+Disallow: /api/
